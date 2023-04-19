@@ -14,8 +14,7 @@ namespace Derivadas_LIB.Funciones
 
         public int K;
 
-        public Potencial(int k, Funcion fX, int exponente)
-            : base(Type.Potencial)
+        public void Init(int k, Funcion fX, int exponente)
         {
             Exponente = exponente;
             Fx = fX;
@@ -24,16 +23,22 @@ namespace Derivadas_LIB.Funciones
 
         public override Funcion Derivada()
         {
-            Potencial p = new Potencial(K * Exponente, (Funcion)Fx.Clone(), Exponente - 1);
 
-            Multiplicacion m = new Multiplicacion(p, Fx.Derivada());
-            
+            Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(Ftype);
+
+            p.Init(K * Exponente, (Funcion)Fx.Clone(), Exponente - 1);
+
+            Multiplicacion m = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ftype);
+            m.Init(p, Fx.Derivada());
+
             return m;
         }
 
         public override object Clone()
         {
-            Potencial p = new Potencial(K,(Funcion)Fx.Clone(), Exponente);
+            Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(Ftype);
+
+            p.Init(K, (Funcion)Fx.Clone(), Exponente);
 
             return p;
         }

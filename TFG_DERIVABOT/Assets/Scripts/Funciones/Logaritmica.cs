@@ -10,22 +10,24 @@ namespace Derivadas_LIB.Funciones
     {
         public Funcion Fx;
 
-        public Logaritmica(Funcion fX)
-            : base(Type.Logaritmica)
+        public void Init(Funcion fX)
         {
             Fx = fX;
         }
 
         public override Funcion Derivada()
         {
-            return new Division(Fx.Derivada(), (Funcion)Fx.Clone());
+            Division d = ManagerFunciones.Instance.GetFuncion<Division>(Ftype);
+            d.Init(Fx.Derivada(), (Funcion)Fx.Clone());
+
+            return d;
         }
 
         public override object Clone()
         {
-            Logaritmica p = new Logaritmica((Funcion)Fx.Clone());
-
-            return p;
+            Logaritmica l = ManagerFunciones.Instance.GetFuncion<Logaritmica>(Ftype);
+            l.Init((Funcion)Fx.Clone());
+            return l;
         }
     }
 }

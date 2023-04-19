@@ -199,6 +199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400836782}
+  - component: {fileID: 400836783}
   m_Layer: 0
   m_Name: FunctionManager
   m_TagString: Untagged
@@ -221,6 +222,19 @@ Transform:
   m_Father: {fileID: 1117761977}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &400836783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400836781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1602d243dde6843a181c3dd3a399d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabsFunciones: []
 --- !u!1 &401817755
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,8 +500,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 542561768}
-  - component: {fileID: 542561769}
-  m_Layer: 0
+  - component: {fileID: 542561770}
+  m_Layer: 2
   m_Name: Robot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,7 +526,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &542561769
+--- !u!114 &542561770
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -521,14 +535,59 @@ MonoBehaviour:
   m_GameObject: {fileID: 542561767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 462b8eca5dbc2ea4eb8891b5b88b8de1, type: 3}
+  m_Script: {fileID: 11500000, guid: ce6d33b1abdfca74d9ab825901aaef15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bateria: 3
-  energia: 2
-  textoBateria: {fileID: 1867200948}
-  textoEnergia: {fileID: 401817758}
-  objetoOcultar: {fileID: 750709875}
+  Ftype: 0
+  Exponente: 2
+  K: 3
+  _textoBateria: {fileID: 1867200948}
+  _textoEnergia: {fileID: 401817758}
+  _bateria: {fileID: 750709875}
+--- !u!1 &628448647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628448649}
+  - component: {fileID: 628448648}
+  m_Layer: 0
+  m_Name: Borrar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &628448648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628448647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6ca194dd31f324b8f11728ea66de57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &628448649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628448647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.4380813, y: 1.8292897, z: 0.054510348}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &750709875
 GameObject:
   m_ObjectHideFlags: 0

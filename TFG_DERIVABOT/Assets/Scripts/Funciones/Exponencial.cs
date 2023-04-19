@@ -10,26 +10,28 @@ namespace Derivadas_LIB.Funciones
     {
         public Funcion Fx;
 
-        public Exponencial(Funcion fX)
-            : base(Type.Exponencial)
+        public void Init(Funcion fX)
         {
             Fx = fX;
         }
 
         public override Funcion Derivada()
         {
-            Exponencial e = new Exponencial((Funcion)Fx.Clone());
+            Exponencial e = ManagerFunciones.Instance.GetFuncion<Exponencial>(Ftype);
+            e.Init((Funcion)Fx.Clone());
 
-            Multiplicacion m = new Multiplicacion(Fx.Derivada(), e);
+            Multiplicacion m = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ftype);
+            m.Init(Fx.Derivada(), e);
 
             return m;
         }
 
         public override object Clone()
         {
-            Exponencial p = new Exponencial((Funcion)Fx.Clone());
+            Exponencial e = ManagerFunciones.Instance.GetFuncion<Exponencial>(Ftype);
+            e.Init((Funcion)Fx.Clone());
 
-            return p;
+            return e;
         }
     }
 }

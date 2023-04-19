@@ -11,8 +11,7 @@ namespace Derivadas_LIB.Funciones
         public Funcion Ux;
         public Funcion Vx;
 
-        public Resta(Funcion uX, Funcion vX)
-            : base(Type.Resta)
+        public void Init(Funcion uX, Funcion vX)
         {
             Ux = uX;
             Vx = vX;
@@ -20,12 +19,16 @@ namespace Derivadas_LIB.Funciones
 
         public override Funcion Derivada()
         {
-            return new Resta(Ux.Derivada(), Vx.Derivada());
+            Resta resta = ManagerFunciones.Instance.GetFuncion<Resta>(Ftype);
+            resta.Init(Ux.Derivada(), Vx.Derivada());
+            return resta;
         }
 
         public override object Clone()
         {
-            return new Resta((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
+            Resta resta = ManagerFunciones.Instance.GetFuncion<Resta>(Ftype);
+            resta.Init((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
+            return resta;
         }
     }
 }

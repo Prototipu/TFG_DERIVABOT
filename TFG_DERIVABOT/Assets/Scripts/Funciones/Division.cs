@@ -11,8 +11,7 @@ namespace Derivadas_LIB.Funciones
         public Funcion Ux;
         public Funcion Vx;
 
-        public Division(Funcion uX, Funcion vX)
-            : base(Type.Division)
+        public void Init(Funcion uX, Funcion vX)
         {
             Ux = uX;
             Vx = vX;
@@ -23,23 +22,30 @@ namespace Derivadas_LIB.Funciones
             Funcion dUx = Ux.Derivada();
             Funcion dVx = Vx.Derivada();
 
-            Multiplicacion m1 = new Multiplicacion(dUx, (Funcion)Vx.Clone());
-            Multiplicacion m2 = new Multiplicacion((Funcion)Ux.Clone(), dVx);
+            Multiplicacion m1 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ftype);
+            m1.Init(dUx, (Funcion)Vx.Clone());
 
-            Resta s = new Resta(m1, m2);
+            Multiplicacion m2 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ftype);
+            m1.Init((Funcion)Ux.Clone(), dVx);
 
-            Potencial p = new Potencial(1, (Funcion)Vx.Clone(), 2);
+            Resta r = ManagerFunciones.Instance.GetFuncion<Resta>(Ftype);
+            r.Init(m1, m2);
 
-            Division d = new Division(s, p);
+            Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(Ftype);
+            p.Init(1, (Funcion)Vx.Clone(), 2);
+
+            Division d = ManagerFunciones.Instance.GetFuncion<Division>(Ftype);
+            d.Init(r, p);
 
             return d;
         }
 
         public override object Clone()
         {
-            Division m = new Division((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
+            Division d = ManagerFunciones.Instance.GetFuncion<Division>(Ftype);
+            d.Init((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
 
-            return m;
+            return d;
         }
     }
 }

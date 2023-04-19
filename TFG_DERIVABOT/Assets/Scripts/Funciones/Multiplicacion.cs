@@ -11,8 +11,7 @@ namespace Derivadas_LIB.Funciones
         public Funcion Ux;
         public Funcion Vx;
 
-        public Multiplicacion(Funcion uX, Funcion vX)
-            : base(Type.Multiplicacion)
+        public void Init(Funcion uX, Funcion vX)
         {
             Ux = uX;
             Vx = vX;
@@ -23,17 +22,22 @@ namespace Derivadas_LIB.Funciones
             Funcion dUx = Ux.Derivada();
             Funcion dVx = Vx.Derivada();
 
-            Multiplicacion m1 = new Multiplicacion(dUx, (Funcion)Vx.Clone());
-            Multiplicacion m2 = new Multiplicacion((Funcion)Ux.Clone(), dVx);
+            Multiplicacion m1 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ftype);
+            m1.Init(dUx, (Funcion)Vx.Clone());
 
-            Suma s = new Suma(m1, m2);
+            Multiplicacion m2 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ftype);
+            m1.Init((Funcion)Ux.Clone(), dVx);
+
+            Suma s = ManagerFunciones.Instance.GetFuncion<Suma>(Ftype);
+            s.Init(m1, m2);
 
             return s;
         }
 
         public override object Clone()
         {
-            Multiplicacion m = new Multiplicacion((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
+            Multiplicacion m = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ftype);
+            m.Init((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
 
             return m;
         }

@@ -20,11 +20,6 @@ namespace Derivadas_LIB
 
         public Type Ftype;
 
-        public Funcion(Type type)
-        {
-            Ftype = type;
-        }
-
         public abstract Funcion Derivada();
         public abstract object Clone();
     }

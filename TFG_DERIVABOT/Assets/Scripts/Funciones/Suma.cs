@@ -11,8 +11,7 @@ namespace Derivadas_LIB.Funciones
         public Funcion Ux;
         public Funcion Vx;
         
-        public Suma(Funcion uX, Funcion vX)
-            : base(Type.Suma)
+        public void Init(Funcion uX, Funcion vX)
         {
             Ux = uX;
             Vx = vX;
@@ -20,12 +19,16 @@ namespace Derivadas_LIB.Funciones
 
         public override Funcion Derivada()
         {
-            return new Suma(Ux.Derivada(), Vx.Derivada());
+            Suma suma = ManagerFunciones.Instance.GetFuncion<Suma>(Ftype);
+            suma.Init(Ux.Derivada(), Vx.Derivada());
+            return suma;
         }
 
         public override object Clone()
         {
-            return new Suma((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
+            Suma suma = ManagerFunciones.Instance.GetFuncion<Suma>(Ftype);
+            suma.Init((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
+            return suma;
         }
     }
 }
