@@ -7,36 +7,63 @@ using System;
 
 public class Borrar : MonoBehaviour
 {
+
+    public SpriteRenderer space;
+    
     // Start is called before the first frame update
     void Start()
     {
-        Incognita eX = new Incognita();
-        eX.Init(3, 3);
 
-        Logaritmica uX = new Logaritmica();
-        Incognita temp = new Incognita();
-        temp.Init(4, 5);
-        uX.Init(temp);
+        // DIV SUM F 3 2 F 1 5 RES F 2 1 F 4 6
 
-        Exponencial vX = new Exponencial();
-        vX.Init((Funcion)eX.Clone());
-
-        Suma suma = new Suma();
-        suma.Init(uX, vX);
-
-        Multiplicacion mult = new Multiplicacion();
-        mult.Init(eX, suma);
-
-        Potencial p = new Potencial();
-        p.Init(5, (Funcion)eX.Clone(), 3);
-
-        Division div = new Division();
-        div.Init(mult, p);
+        // (3x^2 + x^5)/(2x - 4x^6)
 
 
-        Debug.Log(ParserFunciones.ParsearString(div, Funcion.Type.None));
+        //Incognita eX = ManagerFunciones.Instance.GetFuncion<Incognita>();
+        //eX.Init(3, 3);
 
-        Debug.Log(ParserFunciones.ParsearString(div.Derivada(), Funcion.Type.None));
+        //Logaritmica uX = ManagerFunciones.Instance.GetFuncion<Logaritmica>();
+        //Incognita temp = ManagerFunciones.Instance.GetFuncion<Incognita>();
+        //temp.Init(4, 5);
+        //uX.Init(temp);
+
+        //Exponencial vX = ManagerFunciones.Instance.GetFuncion<Exponencial>();
+        //vX.Init((Funcion)eX.Clone());
+
+        //Suma suma = ManagerFunciones.Instance.GetFuncion<Suma>();
+        //suma.Init(uX, vX);
+
+        //Multiplicacion mult = ManagerFunciones.Instance.GetFuncion<Multiplicacion>();
+        //mult.Init(eX, suma);
+
+        //Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>();
+        //p.Init(5, (Funcion)eX.Clone(), 3);
+
+        //Division div = ManagerFunciones.Instance.GetFuncion<Division>();
+        //div.Init(mult, p);
+
+        //div.name = "Original";
+
+        //div.Escalar(space);
+
+        //Funcion derivada = div.Derivada();
+
+        //derivada.name = "Derivada";
+
+        //derivada.Escalar(space);
+
+        //Debug.Log(ParserFunciones.ParsearString(div, null));
+
+        //Destroy(div.gameObject);
+        //Debug.Log(ParserFunciones.ParsearString(derivada, null));
+
+
+        Funcion f = ParserFunciones.CrearFuncion("DIV SUM F 3 2 F 1 5 RES F 2 1 F 4 6");
+
+        f.Escalar(space);
+
+        Debug.Log(ParserFunciones.ParsearString(f, null));
+
     }
 
     // Update is called once per frame

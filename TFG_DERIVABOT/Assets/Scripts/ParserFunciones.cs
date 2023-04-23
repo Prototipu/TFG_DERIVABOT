@@ -9,32 +9,38 @@ namespace Derivadas_LIB
 {
     public static class ParserFunciones
     {
-        public static string ParsearString(Funcion funcion, Funcion.Type lastType)
+        public static readonly Dictionary<Type, int> FunctionTypes = new Dictionary<Type, int>()
         {
+            {typeof(Suma),0 },
+            {typeof(Resta),1 },
+            {typeof(Multiplicacion),2 },
+            {typeof(Division),3 },
+            {typeof(Potencial),4 },
+            {typeof(Exponencial),5 },
+            {typeof(Logaritmica),6 },
+            {typeof(Incognita),7 },
+        };
 
-            bool parCheck = lastType != Funcion.Type.None;
-            bool specialCheck = lastType == Funcion.Type.Division || lastType == Funcion.Type.Multiplicacion ||
-                lastType == Funcion.Type.Logaritmica || lastType == Funcion.Type.Exponencial;
-            switch (funcion.Ftype)
+        public static string ParsearString(Funcion funcion, Type lastType)
+        {
+            bool parCheck = lastType != null;
+            bool specialCheck = lastType == typeof(Division) || lastType == typeof(Multiplicacion) ||
+                lastType == typeof(Logaritmica) || lastType == typeof(Exponencial);
+
+            Type Ftype = funcion.GetType();
+
+            switch (funcion)
             {
-                case Funcion.Type.Incognita:
-                    Incognita i = funcion as Incognita;
-                    if (i == null)
-                        throw new Exception("El parametro recibido fue null");
-
+                case Incognita i:
                     string iret = $"{(i.K > 1 || (i.K == 1 && i.Exponente == 0) ? i.K.ToString() : "")}{(i.Exponente > 0 ? "x" + (i.Exponente > 1 ? $"^{i.Exponente}" : "") : "")}";
 
                     if (iret != "" && specialCheck)
                         iret = "(" + iret + ")";
 
                     return iret;
-                case Funcion.Type.Potencial:
-                    Potencial p = funcion as Potencial;
 
-                    if (p == null)
-                        throw new Exception("El parametro recibido fue null");
-
-                    string pFx = ParsearString(p.Fx, p.Ftype);
+                case Potencial p:
+                    string pFx = ParsearString(p.Fx, Ftype);
 
                     if (pFx == "")
                         return "";
@@ -44,33 +50,19 @@ namespace Derivadas_LIB
 
                     return kT + eT;
 
-                case Funcion.Type.Exponencial:
-                    Exponencial e = funcion as Exponencial;
-                    if (e == null)
-                        throw new Exception("El parametro recibido fue null");
-
-                    string eFx = ParsearString(e.Fx, e.Ftype);
+                case Exponencial e:
+                    string eFx = ParsearString(e.Fx, Ftype);
 
                     return $"e^{eFx}";
 
-                case Funcion.Type.Logaritmica:
-                    Logaritmica l = funcion as Logaritmica;
-
-                    if (l == null)
-                        throw new Exception("El parametro recibido fue null");
-
-                    string lFx = ParsearString(l.Fx, l.Ftype);
+                case Logaritmica l:
+                    string lFx = ParsearString(l.Fx, Ftype);
 
                     return $"ln{lFx}";
 
-                case Funcion.Type.Suma:
-                    Suma s = funcion as Suma;
-
-                    if (s == null)
-                        throw new Exception("El parametro recibido fue null");
-
-                    string pUxS = ParsearString(s.Ux, s.Ftype);
-                    string pVxS = ParsearString(s.Vx, s.Ftype);
+                case Suma s:
+                    string pUxS = ParsearString(s.Ux, Ftype);
+                    string pVxS = ParsearString(s.Vx, Ftype);
 
                     if (pUxS == "")
                         return pVxS;
@@ -82,14 +74,10 @@ namespace Derivadas_LIB
                     retS += $"{pUxS} + {pVxS}{(parCheck ? ")" : "")}";
 
                     return retS;
-                case Funcion.Type.Resta:
-                    Resta r = funcion as Resta;
 
-                    if (r == null)
-                        throw new Exception("El parametro recibido fue null");
-
-                    string pUxR = ParsearString(r.Ux, r.Ftype);
-                    string pVxR = ParsearString(r.Vx, r.Ftype);
+                case Resta r:
+                    string pUxR = ParsearString(r.Ux, Ftype);
+                    string pVxR = ParsearString(r.Vx, Ftype);
 
                     if (pUxR == "")
                         return pVxR;
@@ -103,14 +91,9 @@ namespace Derivadas_LIB
 
                     return retR;
 
-                case Funcion.Type.Multiplicacion:
-                    Multiplicacion m = funcion as Multiplicacion;
-
-                    if (m == null)
-                        throw new Exception("El parametro recibido fue null");
-
-                    string pUxM = ParsearString(m.Ux, m.Ftype);
-                    string pVxM = ParsearString(m.Vx, m.Ftype);
+                case Multiplicacion m:
+                    string pUxM = ParsearString(m.Ux, Ftype);
+                    string pVxM = ParsearString(m.Vx, Ftype);
 
                     if (pUxM == "" || pVxM == "")
                         return "";
@@ -121,14 +104,10 @@ namespace Derivadas_LIB
 
                     return retM;
 
-                case Funcion.Type.Division:
-                    Division div = funcion as Division;
+                case Division div:
 
-                    if (div == null)
-                        throw new Exception("El parametro recibido fue null");
-
-                    string pUxD = ParsearString(div.Ux, div.Ftype);
-                    string pVxD = ParsearString(div.Vx, div.Ftype);
+                    string pUxD = ParsearString(div.Ux, Ftype);
+                    string pVxD = ParsearString(div.Vx, Ftype);
 
                     if (pUxD == "")
                         return "";
@@ -145,5 +124,47 @@ namespace Derivadas_LIB
 
             return "";
         }
+
+        public static Funcion CrearFuncion(string nivel)
+        {
+            return CrearFuncion(new Queue<string>(nivel.Split(' ')));
+        }
+
+        private static Funcion CrearFuncion(Queue<string> elementos)
+        {
+            switch (elementos.Dequeue())
+            {
+                case "F":
+                    int.TryParse(elementos.Dequeue(), out int k);
+                    int.TryParse(elementos.Dequeue(), out int exp);
+                    Incognita i = ManagerFunciones.Instance.GetFuncion<Incognita>();
+                    i.Init(k, exp);
+                    return i;
+
+                case "SUM":
+                    Funcion uXs = CrearFuncion(elementos);
+                    Funcion vXs = CrearFuncion(elementos);
+                    Suma suma = ManagerFunciones.Instance.GetFuncion<Suma>();
+                    suma.Init(uXs, vXs);
+                    return suma;
+
+                case "RES":
+                    Funcion uXr = CrearFuncion(elementos);
+                    Funcion vXr = CrearFuncion(elementos);
+                    Resta resta = ManagerFunciones.Instance.GetFuncion<Resta>();
+                    resta.Init(uXr, vXr);
+                    return resta;
+
+                case "DIV":
+                    Funcion uXd = CrearFuncion(elementos);
+                    Funcion vXd = CrearFuncion(elementos);
+                    Division div = ManagerFunciones.Instance.GetFuncion<Division>();
+                    div.Init(uXd, vXd);
+                    return div;
+            }
+
+            return null;
+        }
     }
+
 }

@@ -18,30 +18,30 @@ namespace Derivadas_LIB.Funciones
         [SerializeField]
         private GameObject _bateria;
 
-        void Update()
-        {
+        //void Update()
+        //{
 
-            // Actualizar los textos en el gameobject
-            _textoBateria.text = Exponente.ToString();
-            _textoEnergia.text = K.ToString();
+        //    // Actualizar los textos en el gameobject
+        //    _textoBateria.text = Exponente.ToString();
+        //    _textoEnergia.text = K.ToString();
 
-            // Ocultar el gameobject si la batería llega a cero
-            if (Exponente <= 0f)
-            {
-                _bateria.SetActive(false);
-            }
-        }
+        //    // Ocultar el gameobject si la batería llega a cero
+        //    if (Exponente <= 0f)
+        //    {
+        //        _bateria.SetActive(false);
+        //    }
+        //}
 
-        void OnMouseDown()
-        {
-            // Reducir la batería en 1 cuando se hace clic en el gameobject
-            Exponente -= 1;
-            _textoEnergia.text = K.ToString();
-            if (Exponente <= 0f)
-            {
-                _bateria.SetActive(false);
-            }
-        }
+        //void OnMouseDown()
+        //{
+        //    // Reducir la batería en 1 cuando se hace clic en el gameobject
+        //    Exponente -= 1;
+        //    _textoEnergia.text = K.ToString();
+        //    if (Exponente <= 0f)
+        //    {
+        //        _bateria.SetActive(false);
+        //    }
+        //}
 
         public void Init(int k, int exponente)
         {
@@ -51,7 +51,7 @@ namespace Derivadas_LIB.Funciones
 
         public override Funcion Derivada()
         {
-            Incognita i = ManagerFunciones.Instance.GetFuncion<Incognita>(Ftype);
+            Incognita i = ManagerFunciones.Instance.GetFuncion<Incognita>();
             i.Init(K * Exponente, Exponente - 1);
 
             return i;
@@ -59,9 +59,13 @@ namespace Derivadas_LIB.Funciones
 
         public override object Clone()
         {
-            Incognita i = ManagerFunciones.Instance.GetFuncion<Incognita>(Ftype);
+            Incognita i = ManagerFunciones.Instance.GetFuncion<Incognita>();
             i.Init(K, Exponente);
             return i;
+        }
+
+        public override void EscalarI(SpriteRenderer scaler)
+        {
         }
     }
 }

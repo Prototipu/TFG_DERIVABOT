@@ -24,9 +24,9 @@ public class ManagerFunciones : MonoBehaviour
         }
     }
 
-    public T GetFuncion<T>(Funcion.Type type) where T : Funcion
+    public T GetFuncion<T>() where T : Funcion
     {
-        T funcion = Instantiate(_prefabsFunciones[(int)type], Vector3.zero, Quaternion.identity).GetComponent<T>();
+        T funcion = Instantiate(_prefabsFunciones[ParserFunciones.FunctionTypes[typeof(T)]], Vector3.zero, Quaternion.identity).GetComponent<T>();
 
         return funcion;
     }
