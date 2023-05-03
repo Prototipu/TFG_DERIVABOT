@@ -14,55 +14,23 @@ public class Borrar : MonoBehaviour
     void Start()
     {
 
-        // DIV SUM F 3 2 F 1 5 RES F 2 1 F 4 6
-
+        // DIV SUM X 3 2 X 1 5 RES X 2 1 X 4 6
         // (3x^2 + x^5)/(2x - 4x^6)
 
 
-        //Incognita eX = ManagerFunciones.Instance.GetFuncion<Incognita>();
-        //eX.Init(3, 3);
+        // LOG EXP SUM X 3 5 POT 2 5 X 2 3
+        // Ln(e^(3x^5 + 2*(2x^3)^5)
 
-        //Logaritmica uX = ManagerFunciones.Instance.GetFuncion<Logaritmica>();
-        //Incognita temp = ManagerFunciones.Instance.GetFuncion<Incognita>();
-        //temp.Init(4, 5);
-        //uX.Init(temp);
+        // SUM X 3 2 X 4 5
+        // 3x^2 + 4x^5
 
-        //Exponencial vX = ManagerFunciones.Instance.GetFuncion<Exponencial>();
-        //vX.Init((Funcion)eX.Clone());
-
-        //Suma suma = ManagerFunciones.Instance.GetFuncion<Suma>();
-        //suma.Init(uX, vX);
-
-        //Multiplicacion mult = ManagerFunciones.Instance.GetFuncion<Multiplicacion>();
-        //mult.Init(eX, suma);
-
-        //Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>();
-        //p.Init(5, (Funcion)eX.Clone(), 3);
-
-        //Division div = ManagerFunciones.Instance.GetFuncion<Division>();
-        //div.Init(mult, p);
-
-        //div.name = "Original";
-
-        //div.Escalar(space);
-
-        //Funcion derivada = div.Derivada();
-
-        //derivada.name = "Derivada";
-
-        //derivada.Escalar(space);
-
-        //Debug.Log(ParserFunciones.ParsearString(div, null));
-
-        //Destroy(div.gameObject);
-        //Debug.Log(ParserFunciones.ParsearString(derivada, null));
-
-
-        Funcion f = ParserFunciones.CrearFuncion("DIV SUM F 3 2 F 1 5 RES F 2 1 F 4 6");
-
-        f.Escalar(space);
-
+        Funcion f = ParserFunciones.CrearFuncion("SUM X 3 2 SUM X 4 5 X 3 2");
         Debug.Log(ParserFunciones.ParsearString(f, null));
+
+        //Destroy(f.gameObject);
+
+        //Funcion fDx = f.Derivada();
+        //Debug.Log(ParserFunciones.ParsearString(fDx, null));
 
     }
 

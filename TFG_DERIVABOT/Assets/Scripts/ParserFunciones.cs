@@ -4,22 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Derivadas_LIB
 {
     public static class ParserFunciones
     {
-        public static readonly Dictionary<Type, int> FunctionTypes = new Dictionary<Type, int>()
-        {
-            {typeof(Suma),0 },
-            {typeof(Resta),1 },
-            {typeof(Multiplicacion),2 },
-            {typeof(Division),3 },
-            {typeof(Potencial),4 },
-            {typeof(Exponencial),5 },
-            {typeof(Logaritmica),6 },
-            {typeof(Incognita),7 },
-        };
 
         public static string ParsearString(Funcion funcion, Type lastType)
         {
@@ -32,7 +23,7 @@ namespace Derivadas_LIB
             switch (funcion)
             {
                 case Incognita i:
-                    string iret = $"{(i.K > 1 || (i.K == 1 && i.Exponente == 0) ? i.K.ToString() : "")}{(i.Exponente > 0 ? "x" + (i.Exponente > 1 ? $"^{i.Exponente}" : "") : "")}";
+                    string iret = $"{(i.K != 0 || (i.K == 1 && i.Exponente == 0) ? i.K.ToString() : "")}{(i.Exponente > 0 ? "x" + (i.Exponente > 1 ? $"^{i.Exponente}" : "") : "")}";
 
                     if (iret != "" && specialCheck)
                         iret = "(" + iret + ")";
@@ -58,7 +49,7 @@ namespace Derivadas_LIB
                 case Logaritmica l:
                     string lFx = ParsearString(l.Fx, Ftype);
 
-                    return $"ln{lFx}";
+                    return $"ln({lFx})";
 
                 case Suma s:
                     string pUxS = ParsearString(s.Ux, Ftype);
@@ -132,38 +123,78 @@ namespace Derivadas_LIB
 
         private static Funcion CrearFuncion(Queue<string> elementos)
         {
+            Funcion uX = null;
+            Funcion vX = null;
+            int k = 0;
+            int exp = 0;
+
             switch (elementos.Dequeue())
             {
-                case "F":
-                    int.TryParse(elementos.Dequeue(), out int k);
-                    int.TryParse(elementos.Dequeue(), out int exp);
-                    Incognita i = ManagerFunciones.Instance.GetFuncion<Incognita>();
-                    i.Init(k, exp);
-                    return i;
+                case "X":
+                    int.TryParse(elementos.Dequeue(), out k);
+                    int.TryParse(elementos.Dequeue(), out exp);
+                    return ManagerFunciones.Instance.GetFuncion<Incognita>(k, exp);
 
                 case "SUM":
-                    Funcion uXs = CrearFuncion(elementos);
-                    Funcion vXs = CrearFuncion(elementos);
-                    Suma suma = ManagerFunciones.Instance.GetFuncion<Suma>();
-                    suma.Init(uXs, vXs);
-                    return suma;
+                    uX = CrearFuncion(elementos);
+                    vX = CrearFuncion(elementos);
+                    return ManagerFunciones.Instance.GetFuncion<Suma>(uX, vX);
 
                 case "RES":
-                    Funcion uXr = CrearFuncion(elementos);
-                    Funcion vXr = CrearFuncion(elementos);
-                    Resta resta = ManagerFunciones.Instance.GetFuncion<Resta>();
-                    resta.Init(uXr, vXr);
-                    return resta;
+                    uX = CrearFuncion(elementos);
+                    vX = CrearFuncion(elementos);
+                    return ManagerFunciones.Instance.GetFuncion<Resta>(uX, vX);
+
+                case "MUL":
+                    uX = CrearFuncion(elementos);
+                    vX = CrearFuncion(elementos);
+                    return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(uX, vX);
 
                 case "DIV":
-                    Funcion uXd = CrearFuncion(elementos);
-                    Funcion vXd = CrearFuncion(elementos);
-                    Division div = ManagerFunciones.Instance.GetFuncion<Division>();
-                    div.Init(uXd, vXd);
-                    return div;
+                    uX = CrearFuncion(elementos);
+                    vX = CrearFuncion(elementos);
+                    return ManagerFunciones.Instance.GetFuncion<Division>(uX, vX);
+
+                case "POT":
+                    int.TryParse(elementos.Dequeue(), out k);
+                    int.TryParse(elementos.Dequeue(), out exp);
+                    uX = CrearFuncion(elementos);
+                    return ManagerFunciones.Instance.GetFuncion<Potencial>(k, uX, exp);
+
+                case "EXP":
+                    uX = CrearFuncion(elementos);
+                    return ManagerFunciones.Instance.GetFuncion<Exponencial>(uX);
+
+                case "LOG":
+                    uX = CrearFuncion(elementos);
+                    return ManagerFunciones.Instance.GetFuncion<Logaritmica>(uX);
             }
 
             return null;
+        }
+
+        public static Bounds BoundsCombinados(GameObject g)
+        {
+            SpriteRenderer[] renderers = g.GetComponentsInChildren<SpriteRenderer>();
+            if (renderers.Length == 0) return new Bounds();
+
+            Bounds combinedBounds = renderers[0].bounds;
+
+            for (int i = 1; i < renderers.Length; i++)
+            {
+                combinedBounds.Encapsulate(renderers[i].bounds);
+            }
+
+            return combinedBounds;
+        }
+
+        public static void ChildCount(Transform parent, ref int count)
+        {
+            foreach (Transform t in parent)
+            {
+                count++;
+                ChildCount(t, ref count);
+            }
         }
     }
 

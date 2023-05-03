@@ -17,27 +17,21 @@ namespace Derivadas_LIB.Funciones
         public void Init(Funcion fX)
         {
             Fx = fX;
-            Fx.Escalar(_scaleFx);
         }
 
         public override Funcion Derivada()
         {
-            Division d = ManagerFunciones.Instance.GetFuncion<Division>();
-            d.Init(Fx.Derivada(), (Funcion)Fx.Clone());
-
-            return d;
+            return ManagerFunciones.Instance.GetFuncion<Division>(Fx.Derivada(), Fx.Clone());
         }
 
         public override object Clone()
         {
-            Logaritmica l = ManagerFunciones.Instance.GetFuncion<Logaritmica>();
-            l.Init((Funcion)Fx.Clone());
-            return l;
+           return ManagerFunciones.Instance.GetFuncion<Logaritmica>(Fx.Clone());
         }
 
-        public override void EscalarI(SpriteRenderer scaler)
+        public override Bounds Escalar()
         {
-            Fx.EscalarI(_scaleFx);
+            return new Bounds();
         }
     }
 }

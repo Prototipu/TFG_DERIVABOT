@@ -23,34 +23,23 @@ namespace Derivadas_LIB.Funciones
             Exponente = exponente;
             Fx = fX;
             K = k;
-            Fx.Escalar(_scaleFx);
         }
 
         public override Funcion Derivada()
         {
 
-            Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>();
+            Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(K * Exponente, Fx.Clone(), Exponente - 1);
 
-            p.Init(K * Exponente, (Funcion)Fx.Clone(), Exponente - 1);
-
-            Multiplicacion m = ManagerFunciones.Instance.GetFuncion<Multiplicacion>();
-            m.Init(p, Fx.Derivada());
-
-            return m;
+            return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(p, Fx.Derivada());
         }
 
         public override object Clone()
         {
-            Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>();
-
-            p.Init(K, (Funcion)Fx.Clone(), Exponente);
-
-            return p;
+           return ManagerFunciones.Instance.GetFuncion<Potencial>(K, (Funcion)Fx.Clone(), Exponente);
         }
-
-        public override void EscalarI(SpriteRenderer scaler)
+        public override Bounds Escalar()
         {
-            Fx.EscalarI(_scaleFx);
+            return new Bounds();
         }
     }
 }

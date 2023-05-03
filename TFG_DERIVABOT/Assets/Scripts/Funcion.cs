@@ -5,31 +5,14 @@ namespace Derivadas_LIB
 {
     public abstract class Funcion : MonoBehaviour, ICloneable
     {
+        public SpriteRenderer _espacio;
 
-        [SerializeField]
-        SpriteRenderer _maxSpace;
-
-        public void Escalar(SpriteRenderer scaler)
+        private void Awake()
         {
-            transform.SetParent(scaler.transform);
-            transform.localPosition = Vector3.zero;
-
-            if (!_maxSpace) return;
-
-            //float width = _maxSpace.sprite.bounds.size.x;
-            //float height = _maxSpace.sprite.bounds.size.y;
-
-            //float widthScale = scaler.sprite.bounds.size.x / width;
-            //float heightScale = scaler.sprite.bounds.size.y / height;
-            //float scale = Mathf.Min(widthScale, heightScale);
-
-            transform.localScale = Vector3.one;
-
-            EscalarI(null);
+            _espacio = GetComponent<SpriteRenderer>();
         }
 
-        public abstract void EscalarI(SpriteRenderer scaler);
-
+        public abstract Bounds Escalar();
         public abstract Funcion Derivada();
         public abstract object Clone();
     }

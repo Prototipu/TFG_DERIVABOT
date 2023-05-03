@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Derivadas_LIB.Funciones
@@ -13,35 +14,26 @@ namespace Derivadas_LIB.Funciones
         public int Exponente = 100;
         public int K = 50;
 
+        //[SerializeField]
+        //private TMP_Text _textoBateria, _textoEnergia;
+        //[SerializeField]
+        //private GameObject _bateria;
+
         [SerializeField]
-        private TMP_Text _textoBateria, _textoEnergia;
-        [SerializeField]
-        private GameObject _bateria;
+        private GameObject _robot;
 
-        //void Update()
-        //{
+        void Update()
+        {
+            Bounds combinedBounds = ParserFunciones.BoundsCombinados(_robot);
 
-        //    // Actualizar los textos en el gameobject
-        //    _textoBateria.text = Exponente.ToString();
-        //    _textoEnergia.text = K.ToString();
+            Vector3 min = combinedBounds.min;
+            Vector3 max = combinedBounds.max;
 
-        //    // Ocultar el gameobject si la batería llega a cero
-        //    if (Exponente <= 0f)
-        //    {
-        //        _bateria.SetActive(false);
-        //    }
-        //}
-
-        //void OnMouseDown()
-        //{
-        //    // Reducir la batería en 1 cuando se hace clic en el gameobject
-        //    Exponente -= 1;
-        //    _textoEnergia.text = K.ToString();
-        //    if (Exponente <= 0f)
-        //    {
-        //        _bateria.SetActive(false);
-        //    }
-        //}
+            Debug.DrawLine(new Vector3(min.x, min.y, 0), new Vector3(max.x, min.y, 0), Color.red, 5f);
+            Debug.DrawLine(new Vector3(max.x, min.y, 0), new Vector3(max.x, max.y, 0), Color.red, 5f);
+            Debug.DrawLine(new Vector3(max.x, max.y, 0), new Vector3(min.x, max.y, 0), Color.red, 5f);
+            Debug.DrawLine(new Vector3(min.x, max.y, 0), new Vector3(min.x, min.y, 0), Color.red, 5f);
+        }
 
         public void Init(int k, int exponente)
         {
@@ -51,21 +43,17 @@ namespace Derivadas_LIB.Funciones
 
         public override Funcion Derivada()
         {
-            Incognita i = ManagerFunciones.Instance.GetFuncion<Incognita>();
-            i.Init(K * Exponente, Exponente - 1);
-
-            return i;
+           return ManagerFunciones.Instance.GetFuncion<Incognita>(K * Exponente, Exponente - 1);
         }
 
         public override object Clone()
         {
-            Incognita i = ManagerFunciones.Instance.GetFuncion<Incognita>();
-            i.Init(K, Exponente);
-            return i;
+            return ManagerFunciones.Instance.GetFuncion<Incognita>(K, Exponente);
         }
 
-        public override void EscalarI(SpriteRenderer scaler)
+        public override Bounds Escalar()
         {
+            return _espacio.bounds;
         }
     }
 }

@@ -19,9 +19,6 @@ namespace Derivadas_LIB.Funciones
         {
             Ux = uX;
             Vx = vX;
-
-            Ux.Escalar(_scaleUx);
-            Vx.Escalar(_scaleVx);
         }
 
         public override Funcion Derivada()
@@ -29,36 +26,25 @@ namespace Derivadas_LIB.Funciones
             Funcion dUx = Ux.Derivada();
             Funcion dVx = Vx.Derivada();
                 
-            Multiplicacion m1 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>();
-            m1.Init(dUx, (Funcion)Vx.Clone());
+            Multiplicacion m1 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(dUx, Vx.Clone());
 
-            Multiplicacion m2 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>();
-            m2.Init((Funcion)Ux.Clone(), dVx);
+            Multiplicacion m2 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ux.Clone(), dVx);
 
-            Resta r = ManagerFunciones.Instance.GetFuncion<Resta>();
-            r.Init(m1, m2);
+            Resta r = ManagerFunciones.Instance.GetFuncion<Resta>(m1, m2);
 
-            Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>();
-            p.Init(1, (Funcion)Vx.Clone(), 2);
+            Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(1, (Funcion)Vx.Clone(), 2);
 
-            Division d = ManagerFunciones.Instance.GetFuncion<Division>();
-            d.Init(r, p);
-
-            return d;
+            return ManagerFunciones.Instance.GetFuncion<Division>(r, p);
         }
 
         public override object Clone()
         {
-            Division d = ManagerFunciones.Instance.GetFuncion<Division>();
-            d.Init((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
-
-            return d;
+           return ManagerFunciones.Instance.GetFuncion<Division>(Ux.Clone(), Vx.Clone());
         }
 
-        public override void EscalarI(SpriteRenderer scaler)
+        public override Bounds Escalar()
         {
-            Vx.EscalarI(_scaleVx);
-            Ux.EscalarI(_scaleUx);
+            return new Bounds();
         }
     }
 }

@@ -13,15 +13,12 @@ namespace Derivadas_LIB.Funciones
         public Funcion Vx;
 
         [SerializeField]
-        private SpriteRenderer _scaleUx, _scaleVx;
+        private SpriteRenderer _scaleUx, _scaleVx, _operador;
 
         public void Init(Funcion uX, Funcion vX)
         {
             Ux = uX;
             Vx = vX;
-
-            Ux.Escalar(_scaleUx);
-            Vx.Escalar(_scaleVx);
         }
 
         public override Funcion Derivada()
@@ -29,30 +26,59 @@ namespace Derivadas_LIB.Funciones
             Funcion dUx = Ux.Derivada();
             Funcion dVx = Vx.Derivada();
 
-            Multiplicacion m1 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>();
-            m1.Init(dUx, (Funcion)Vx.Clone());
+            Multiplicacion m1 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(dUx, Vx.Clone());
 
-            Multiplicacion m2 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>();
-            m2.Init((Funcion)Ux.Clone(), dVx);
+            Multiplicacion m2 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ux.Clone(), dVx);
 
-            Suma s = ManagerFunciones.Instance.GetFuncion<Suma>();
-            s.Init(m1, m2);
-
-            return s;
+            return ManagerFunciones.Instance.GetFuncion<Suma>(m1,m2);
         }
 
         public override object Clone()
         {
-            Multiplicacion m = ManagerFunciones.Instance.GetFuncion<Multiplicacion>();
-            m.Init((Funcion)Ux.Clone(), (Funcion)Vx.Clone());
-
-            return m;
+            return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ux.Clone(), Vx.Clone());
         }
 
-        public override void EscalarI(SpriteRenderer scaler)
+        public override Bounds Escalar()
         {
-            Vx.EscalarI(_scaleVx);
-            Ux.EscalarI(_scaleUx);
+            transform.localScale = Vector3.one;
+
+            Bounds bUx = Ux.Escalar();
+            Bounds bVx = Vx.Escalar();
+
+            Bounds bEspacio = _espacio.bounds;
+
+            float maxH = Math.Max(bUx.size.y, bVx.size.y);
+
+            float ratio = maxH / bEspacio.size.y;
+
+            transform.localScale = new Vector3(1, ratio, 1);
+
+            _scaleUx.transform.localScale = Vector3.one;
+            _scaleVx.transform.localScale = Vector3.one;
+
+            Bounds bScaleUx = _scaleUx.bounds;
+            Bounds bScaleVx = _scaleVx.bounds;
+
+            float ratioUx = bUx.size.x / bScaleUx.size.x;
+            float ratioVx = bVx.size.x / bScaleVx.size.x;
+
+            _scaleUx.transform.localScale = new Vector3(ratioUx, 1, 1);
+            _scaleUx.transform.localPosition = new Vector3(-_operador.bounds.extents.x - _scaleUx.transform.localScale.x / 2f, 0, 0);
+            _scaleVx.transform.localScale = new Vector3(ratioVx, 1, 1);
+            _scaleVx.transform.localPosition = new Vector3(_operador.bounds.extents.x + _scaleVx.transform.localScale.x / 2f, 0, 0);
+
+            Ux.transform.position = _scaleUx.transform.position + Vector3.up * ((bUx.extents.y) - Mathf.Abs(bScaleUx.min.y - _scaleUx.transform.position.y));
+
+            Vx.transform.position = _scaleVx.transform.position + Vector3.up * ((bVx.extents.y) - Mathf.Abs(bScaleVx.min.y - _scaleVx.transform.position.y));
+
+            Vector3 targetSize = new Vector3(bScaleUx.size.x + bScaleVx.size.x + _operador.bounds.size.x, bEspacio.size.y, 0);
+
+            Bounds newBounds = _espacio.bounds;
+            newBounds.size = targetSize;
+
+            _espacio.bounds = newBounds;
+
+            return newBounds;
         }
     }
 }
