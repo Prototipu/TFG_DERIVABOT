@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Derivadas_LIB.Funciones
 {
@@ -13,7 +14,7 @@ namespace Derivadas_LIB.Funciones
         public Funcion Vx;
 
         [SerializeField]
-        private SpriteRenderer _scaleUx, _scaleVx; 
+        private SpriteRenderer _scaleUx, _scaleVx;
 
         public void Init(Funcion uX, Funcion vX)
         {
@@ -25,7 +26,7 @@ namespace Derivadas_LIB.Funciones
         {
             Funcion dUx = Ux.Derivada();
             Funcion dVx = Vx.Derivada();
-                
+
             Multiplicacion m1 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(dUx, Vx.Clone());
 
             Multiplicacion m2 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ux.Clone(), dVx);
@@ -39,12 +40,22 @@ namespace Derivadas_LIB.Funciones
 
         public override object Clone()
         {
-           return ManagerFunciones.Instance.GetFuncion<Division>(Ux.Clone(), Vx.Clone());
+            return ManagerFunciones.Instance.GetFuncion<Division>(Ux.Clone(), Vx.Clone());
         }
 
-        public override Bounds Escalar()
+        public override Vector2 Escalar()
         {
-            return new Bounds();
+            Vector2 bUx = Ux.Escalar();
+            Vector2 bVx = Vx.Escalar();
+
+            _espacio.transform.localScale = new Vector2(Math.Max(bUx.x, bVx.x),
+                Math.Max(bUx.y, bVx.y) / _scaleUx.transform.localScale.y);
+
+            Ux.transform.position = _scaleUx.transform.position;
+
+            Vx.transform.position = _scaleVx.transform.position;
+
+            return _espacio.transform.localScale;
         }
     }
 }

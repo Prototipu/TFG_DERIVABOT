@@ -26,12 +26,16 @@ namespace Derivadas_LIB.Funciones
 
         public override object Clone()
         {
-           return ManagerFunciones.Instance.GetFuncion<Logaritmica>(Fx.Clone());
+            return ManagerFunciones.Instance.GetFuncion<Logaritmica>(Fx.Clone());
         }
 
-        public override Bounds Escalar()
+        public override Vector2 Escalar()
         {
-            return new Bounds();
+            Vector2 bFx = Fx.Escalar();
+
+            _espacio.transform.localScale = new Vector2(bFx.x + _extra.transform.localScale.x, bFx.y);
+
+            return _espacio.transform.localScale;
         }
     }
 }

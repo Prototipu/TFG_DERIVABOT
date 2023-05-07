@@ -43,7 +43,7 @@ namespace Derivadas_LIB.Funciones
 
         public override Funcion Derivada()
         {
-           return ManagerFunciones.Instance.GetFuncion<Incognita>(K * Exponente, Exponente - 1);
+            return ManagerFunciones.Instance.GetFuncion<Incognita>(K * Exponente, Exponente - 1);
         }
 
         public override object Clone()
@@ -51,9 +51,9 @@ namespace Derivadas_LIB.Funciones
             return ManagerFunciones.Instance.GetFuncion<Incognita>(K, Exponente);
         }
 
-        public override Bounds Escalar()
+        public override Vector2 Escalar()
         {
-            return _espacio.bounds;
+            return _espacio.transform.localScale;
         }
     }
 }

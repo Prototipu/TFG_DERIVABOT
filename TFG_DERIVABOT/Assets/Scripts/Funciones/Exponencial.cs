@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Derivadas_LIB.Funciones
 {
@@ -33,9 +34,16 @@ namespace Derivadas_LIB.Funciones
             return ManagerFunciones.Instance.GetFuncion<Exponencial>(Fx.Clone());
         }
 
-        public override Bounds Escalar()
+        public override Vector2 Escalar()
         {
-            return new Bounds();
+            Vector2 bFx = Fx.Escalar();
+
+            _espacio.transform.localScale = new Vector2(bFx.x,
+                bFx.y / _scaleFx.transform.localScale.y);
+
+            Fx.transform.position = _scaleFx.transform.position;
+
+            return _espacio.transform.localScale;
         }
     }
 }

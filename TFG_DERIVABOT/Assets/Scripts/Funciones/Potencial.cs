@@ -35,11 +35,13 @@ namespace Derivadas_LIB.Funciones
 
         public override object Clone()
         {
-           return ManagerFunciones.Instance.GetFuncion<Potencial>(K, (Funcion)Fx.Clone(), Exponente);
+            return ManagerFunciones.Instance.GetFuncion<Potencial>(K, (Funcion)Fx.Clone(), Exponente);
         }
-        public override Bounds Escalar()
+        public override Vector2 Escalar()
         {
-            return new Bounds();
+            _espacio.transform.localScale = Fx.Escalar();
+
+            return _espacio.transform.localScale;
         }
     }
 }
