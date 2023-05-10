@@ -14,12 +14,33 @@ namespace Derivadas_LIB.Funciones
         public Funcion Vx;
 
         [SerializeField]
-        private SpriteRenderer _scaleUx, _scaleVx;
+        private Anclajes _operador;
 
         public void Init(Funcion uX, Funcion vX)
         {
             Ux = uX;
             Vx = vX;
+
+            Anclajes UxA = Ux.anclajes;
+            Anclajes VxA = Vx.anclajes;
+
+            UxA.Anclar(_operador.GetPunto(Punto.N), Punto.S);
+            VxA.Anclar(_operador.GetPunto(Punto.S), Punto.N);
+
+            Vector2 max = new Vector2(
+                Math.Max(UxA.GetPunto(Punto.E).position.x,
+                        VxA.GetPunto(Punto.E).position.x),
+                UxA.GetPunto(Punto.N).position.y);
+
+            Vector2 min = new Vector2(
+                Math.Min(UxA.GetPunto(Punto.W).position.x,
+                        VxA.GetPunto(Punto.W).position.x),
+                VxA.GetPunto(Punto.S).position.y);
+
+            anclajes.GetPunto(Punto.N).position = new Vector2(transform.position.x, max.y);
+            anclajes.GetPunto(Punto.S).position = new Vector2(transform.position.x, min.y);
+            anclajes.GetPunto(Punto.E).position = new Vector2(max.x, transform.position.y);
+            anclajes.GetPunto(Punto.W).position = new Vector2(min.x, transform.position.y);
         }
 
         public override Funcion Derivada()
@@ -41,21 +62,6 @@ namespace Derivadas_LIB.Funciones
         public override object Clone()
         {
             return ManagerFunciones.Instance.GetFuncion<Division>(Ux.Clone(), Vx.Clone());
-        }
-
-        public override Vector2 Escalar()
-        {
-            Vector2 bUx = Ux.Escalar();
-            Vector2 bVx = Vx.Escalar();
-
-            _espacio.transform.localScale = new Vector2(Math.Max(bUx.x, bVx.x),
-                Math.Max(bUx.y, bVx.y) / _scaleUx.transform.localScale.y);
-
-            Ux.transform.position = _scaleUx.transform.position;
-
-            Vx.transform.position = _scaleVx.transform.position;
-
-            return _espacio.transform.localScale;
         }
     }
 }

@@ -37,11 +37,5 @@ namespace Derivadas_LIB.Funciones
         {
             return ManagerFunciones.Instance.GetFuncion<Potencial>(K, (Funcion)Fx.Clone(), Exponente);
         }
-        public override Vector2 Escalar()
-        {
-            _espacio.transform.localScale = Fx.Escalar();
-
-            return _espacio.transform.localScale;
-        }
     }
 }

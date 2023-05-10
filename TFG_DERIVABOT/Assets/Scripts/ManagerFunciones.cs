@@ -142,8 +142,6 @@ public class ManagerFunciones : MonoBehaviour
             if (Fx > Fsx)
                 _funcionSuperior = nuevaFuncion;
         }
-
-        _funcionSuperior.Escalar();
     }
 
 }

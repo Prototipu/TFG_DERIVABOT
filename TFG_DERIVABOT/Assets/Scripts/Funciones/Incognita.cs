@@ -22,19 +22,6 @@ namespace Derivadas_LIB.Funciones
         [SerializeField]
         private GameObject _robot;
 
-        void Update()
-        {
-            Bounds combinedBounds = ParserFunciones.BoundsCombinados(_robot);
-
-            Vector3 min = combinedBounds.min;
-            Vector3 max = combinedBounds.max;
-
-            Debug.DrawLine(new Vector3(min.x, min.y, 0), new Vector3(max.x, min.y, 0), Color.red, 5f);
-            Debug.DrawLine(new Vector3(max.x, min.y, 0), new Vector3(max.x, max.y, 0), Color.red, 5f);
-            Debug.DrawLine(new Vector3(max.x, max.y, 0), new Vector3(min.x, max.y, 0), Color.red, 5f);
-            Debug.DrawLine(new Vector3(min.x, max.y, 0), new Vector3(min.x, min.y, 0), Color.red, 5f);
-        }
-
         public void Init(int k, int exponente)
         {
             Exponente = exponente;
@@ -49,11 +36,6 @@ namespace Derivadas_LIB.Funciones
         public override object Clone()
         {
             return ManagerFunciones.Instance.GetFuncion<Incognita>(K, Exponente);
-        }
-
-        public override Vector2 Escalar()
-        {
-            return _espacio.transform.localScale;
         }
     }
 }

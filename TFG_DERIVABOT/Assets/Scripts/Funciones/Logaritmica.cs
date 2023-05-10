@@ -28,14 +28,5 @@ namespace Derivadas_LIB.Funciones
         {
             return ManagerFunciones.Instance.GetFuncion<Logaritmica>(Fx.Clone());
         }
-
-        public override Vector2 Escalar()
-        {
-            Vector2 bFx = Fx.Escalar();
-
-            _espacio.transform.localScale = new Vector2(bFx.x + _extra.transform.localScale.x, bFx.y);
-
-            return _espacio.transform.localScale;
-        }
     }
 }
