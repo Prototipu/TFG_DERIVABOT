@@ -10,8 +10,7 @@ namespace Derivadas_LIB.Funciones
 {
     public class Division : Funcion
     {
-        public Funcion Ux;
-        public Funcion Vx;
+        public Funcion Ux,Vx;
 
         [SerializeField]
         private Anclajes _operador;
@@ -27,20 +26,21 @@ namespace Derivadas_LIB.Funciones
             UxA.Anclar(_operador.GetPunto(Punto.N), Punto.S);
             VxA.Anclar(_operador.GetPunto(Punto.S), Punto.N);
 
-            Vector2 max = new Vector2(
-                Math.Max(UxA.GetPunto(Punto.E).position.x,
-                        VxA.GetPunto(Punto.E).position.x),
-                UxA.GetPunto(Punto.N).position.y);
+            float maxX = Math.Max(
+                        UxA.GetPunto(Punto.E).position.x,
+                        VxA.GetPunto(Punto.E).position.x);
 
-            Vector2 min = new Vector2(
-                Math.Min(UxA.GetPunto(Punto.W).position.x,
-                        VxA.GetPunto(Punto.W).position.x),
-                VxA.GetPunto(Punto.S).position.y);
+            float minX = Math.Min(
+                        UxA.GetPunto(Punto.W).position.x,
+                        VxA.GetPunto(Punto.W).position.x);
 
-            anclajes.GetPunto(Punto.N).position = new Vector2(transform.position.x, max.y);
-            anclajes.GetPunto(Punto.S).position = new Vector2(transform.position.x, min.y);
-            anclajes.GetPunto(Punto.E).position = new Vector2(max.x, transform.position.y);
-            anclajes.GetPunto(Punto.W).position = new Vector2(min.x, transform.position.y);
+
+            float pMedioVertical = (UxA.GetPunto(Punto.N).position.y + VxA.GetPunto(Punto.S).position.y) / 2;
+
+            anclajes.GetPunto(Punto.N).position = new Vector2(transform.position.x, UxA.GetPunto(Punto.N).position.y);
+            anclajes.GetPunto(Punto.S).position = new Vector2(transform.position.x, VxA.GetPunto(Punto.S).position.y);
+            anclajes.GetPunto(Punto.E).position = new Vector2(maxX, pMedioVertical);
+            anclajes.GetPunto(Punto.W).position = new Vector2(minX, pMedioVertical);
         }
 
         public override Funcion Derivada()

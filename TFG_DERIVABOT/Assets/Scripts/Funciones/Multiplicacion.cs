@@ -13,33 +13,43 @@ namespace Derivadas_LIB.Funciones
         public Funcion Vx;
 
         [SerializeField]
-        private Anclajes _operador;
+        private ControladorCaja _UxC, _VxC;
+
+        [SerializeField]
+        private Transform _Operador;
 
         public void Init(Funcion uX, Funcion vX)
         {
             Ux = uX;
             Vx = vX;
 
-            Anclajes UxA = Ux.anclajes;
-            Anclajes VxA = Vx.anclajes;
+            _UxC.EncajarFuncion(Ux, true);
+            _VxC.EncajarFuncion(Vx, false);
 
-            UxA.Anclar(_operador.GetPunto(Punto.W), Punto.E);
-            VxA.Anclar(_operador.GetPunto(Punto.E), Punto.W);
 
-            Vector2 max = new Vector2(
-                VxA.GetPunto(Punto.E).position.x,
-                Math.Max(UxA.GetPunto(Punto.N).position.y,
-                        VxA.GetPunto(Punto.N).position.y));
+            _Operador.transform.position = new Vector2(
+                transform.position.x,
+                _UxC.Altura() > _VxC.Altura() ?
+                _VxC.GetPunto(Punto.W).position.y :
+                _UxC.GetPunto(Punto.E).position.y);
 
-            Vector2 min = new Vector2(
-                UxA.GetPunto(Punto.W).position.x,
-                Math.Min(UxA.GetPunto(Punto.S).position.y,
-                        VxA.GetPunto(Punto.S).position.y));
+            float maxY = Math.Max(
+                        _UxC.GetPunto(Punto.N).position.y,
+                        _VxC.GetPunto(Punto.N).position.y);
 
-            anclajes.GetPunto(Punto.N).position = new Vector2(transform.position.x, max.y);
-            anclajes.GetPunto(Punto.S).position = new Vector2(transform.position.x, min.y);
-            anclajes.GetPunto(Punto.E).position = new Vector2(max.x, transform.position.y);
-            anclajes.GetPunto(Punto.W).position = new Vector2(min.x, transform.position.y);
+            float minY = Math.Min(
+                        _UxC.GetPunto(Punto.S).position.y,
+                        _VxC.GetPunto(Punto.S).position.y);
+
+            float maxYHorizontal = Math.Max(_UxC.GetPunto(Punto.W).position.y,
+                                            _VxC.GetPunto(Punto.E).position.y);
+
+            float pMedioHorizontal = (_UxC.GetPunto(Punto.W).position.x + _VxC.GetPunto(Punto.E).position.x) / 2;
+
+            anclajes.GetPunto(Punto.N).position = new Vector2(pMedioHorizontal, maxY);
+            anclajes.GetPunto(Punto.S).position = new Vector2(pMedioHorizontal, minY);
+            anclajes.GetPunto(Punto.E).position = new Vector2(_VxC.GetPunto(Punto.E).position.x, maxYHorizontal);
+            anclajes.GetPunto(Punto.W).position = new Vector2(_UxC.GetPunto(Punto.W).position.x, maxYHorizontal);
         }
 
         public override Funcion Derivada()

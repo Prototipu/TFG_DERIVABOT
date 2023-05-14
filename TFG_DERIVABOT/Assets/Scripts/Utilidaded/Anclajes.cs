@@ -35,11 +35,14 @@ public class Anclajes : MonoBehaviour
         return Vector2.Distance(GetPunto(Punto.E).position, GetPunto(Punto.W).position);
     }
 
-    public void Anclar(Transform posicion, Punto punto) {
+    public void Anclar(Transform posicion, Punto punto) =>
+        Anclar(posicion.position, punto);
 
+    public void Anclar(Vector3 posicion, Punto punto)
+    {
         Vector3 offsetPunto = padre.position - GetPunto(punto).position;
 
-        transform.parent.position = posicion.position + offsetPunto;
+        transform.parent.position = posicion + offsetPunto;
     }
 
     public Transform GetPunto(Punto p)

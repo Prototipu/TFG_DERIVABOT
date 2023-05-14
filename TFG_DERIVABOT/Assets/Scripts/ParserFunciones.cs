@@ -116,6 +116,11 @@ namespace Derivadas_LIB
             return "";
         }
 
+        public static string FormatearFuncion(Funcion funcion)
+        {
+            return "";
+        }
+
         public static Funcion CrearFuncion(string nivel)
         {
             return CrearFuncion(new Queue<string>(nivel.Split(' ')));
