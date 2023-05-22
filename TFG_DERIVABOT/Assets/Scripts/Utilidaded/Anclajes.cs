@@ -14,16 +14,8 @@ public class Anclajes : MonoBehaviour
 {
     public Transform[] Puntos;
 
-    private Transform padre;
-
     [SerializeField]
     private SpriteRenderer _referencia;
-
-
-    private void Awake()
-    {
-        padre = transform.parent;
-    }
 
     public float Altura()
     {
@@ -40,7 +32,7 @@ public class Anclajes : MonoBehaviour
 
     public void Anclar(Vector3 posicion, Punto punto)
     {
-        Vector3 offsetPunto = padre.position - GetPunto(punto).position;
+        Vector3 offsetPunto = transform.parent.position - GetPunto(punto).position;
 
         transform.parent.position = posicion + offsetPunto;
     }

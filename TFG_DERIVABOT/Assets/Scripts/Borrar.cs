@@ -9,7 +9,7 @@ public class Borrar : MonoBehaviour
 {
 
     public SpriteRenderer space;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +27,11 @@ public class Borrar : MonoBehaviour
 
         // SUM X 2 3 EXP SUM MUL X 2 3 SUM X 2 3 X 3 1 DIV SUM X 3 2 X 1 5 RES X 2 1 X 4 6
 
+        // MUL DIV X 2 3 SUM X 3 2 X 3 2 RES X 2 3 X 2 3
 
         Funcion f = ParserFunciones.CrearFuncion("MUL DIV X 2 3 SUM X 3 2 X 3 2 RES X 2 3 X 2 3");
         Debug.Log(ParserFunciones.ParsearString(f, null));
+        Debug.Log(ParserFunciones.FormatearFuncion(f));
 
         //Destroy(f.gameObject);
 

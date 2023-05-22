@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: be89d9a449c366746b3fabccbc5a300b
+guid: 48c4e83e3ebb763488329fc619c4edf7
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -91,70 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: SIMBOLO RESTA
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 76
-      y: 48
-      width: 36
-      height: 10
-    spriteID: e6a999b89367ca841b0ad069c50e50af
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 40, y: 21}
-  - name: SIMBOLO MULTIPLICACION
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 97
-      width: 33
-      height: 33
-    spriteID: 33edc42ecc6dbc447ab41688b54ddbc6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -34, y: 82}
-  - name: SIMBOLO SUMA
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 76
-      y: 4
-      width: 36
-      height: 36
-    spriteID: 6cb5042c34f04764ba7fcfdd37cca223
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 40, y: -10}
-  - name: CAJA DE UNION
+  - name: FONDO
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -163,9 +100,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 64
-      height: 64
-    spriteID: 3617022e3f65a1842ba3e2950ff11649
+      width: 186
+      height: 186
+    spriteID: f91f14f927dccb747b3293b2b26483e0
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -174,8 +111,8 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -18, y: 4}
-  - name: BARRA DE UNION
+    uvTransform: {x: -17, y: -17}
+  - name: PARED_SUPERIOR
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -183,10 +120,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 76
-      width: 107
-      height: 13
-    spriteID: 38bc2ba927639b3428beaf3138ab6fbb
+      y: 198
+      width: 228
+      height: 21
+    spriteID: 318a1dce1003e864d9bbcaf9a6a5fd91
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -195,7 +132,70 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 4, y: 51}
+    uvTransform: {x: 4, y: -9}
+  - name: PARED_DERECHA
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 227
+      width: 21
+      height: 228
+    spriteID: e2d3e1aa480fff243a43f2f32b7e2f82
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -203, y: 227}
+  - name: PARED_INFERIOR
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 463
+      width: 228
+      height: 21
+    spriteID: 10ecef2b93b6d51489b3c1bc75661209
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 463}
+  - name: PARED_IZQUIERDA
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 33
+      y: 227
+      width: 21
+      height: 228
+    spriteID: e67dbce6563451a428d492c7734db227
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 33, y: 227}
   characterData:
     bones: []
     parts: []
@@ -270,53 +270,63 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: SIMBOLO RESTA
-    spriteName: SIMBOLO RESTA
-    isGroup: 0
+  - name: Caja copia
+    spriteName: 
+    isGroup: 1
     parentIndex: -1
-    spriteID: e6a999b89367ca841b0ad069c50e50af
-    layerID: 80
-    mosaicPosition: {x: 76, y: 48}
+    spriteID: 8c95ae4c1a495cd4788cf8241a546c27
+    layerID: 63
+    mosaicPosition: {x: 0, y: 0}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
-  - name: SIMBOLO MULTIPLICACION
-    spriteName: SIMBOLO MULTIPLICACION
+  - name: FONDO
+    spriteName: FONDO
     isGroup: 0
-    parentIndex: -1
-    spriteID: 33edc42ecc6dbc447ab41688b54ddbc6
-    layerID: 78
-    mosaicPosition: {x: 4, y: 97}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: SIMBOLO SUMA
-    spriteName: SIMBOLO SUMA
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 6cb5042c34f04764ba7fcfdd37cca223
-    layerID: 77
-    mosaicPosition: {x: 76, y: 4}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: CAJA DE UNION
-    spriteName: CAJA DE UNION
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 3617022e3f65a1842ba3e2950ff11649
-    layerID: 72
+    parentIndex: 0
+    spriteID: f91f14f927dccb747b3293b2b26483e0
+    layerID: 70
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: BARRA DE UNION
-    spriteName: BARRA DE UNION
+  - name: PARED_SUPERIOR
+    spriteName: PARED_SUPERIOR
     isGroup: 0
-    parentIndex: -1
-    spriteID: 38bc2ba927639b3428beaf3138ab6fbb
-    layerID: 70
-    mosaicPosition: {x: 4, y: 76}
+    parentIndex: 0
+    spriteID: 318a1dce1003e864d9bbcaf9a6a5fd91
+    layerID: 73
+    mosaicPosition: {x: 4, y: 198}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: PARED_DERECHA
+    spriteName: PARED_DERECHA
+    isGroup: 0
+    parentIndex: 0
+    spriteID: e2d3e1aa480fff243a43f2f32b7e2f82
+    layerID: 74
+    mosaicPosition: {x: 4, y: 227}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: PARED_INFERIOR
+    spriteName: PARED_INFERIOR
+    isGroup: 0
+    parentIndex: 0
+    spriteID: 10ecef2b93b6d51489b3c1bc75661209
+    layerID: 75
+    mosaicPosition: {x: 4, y: 463}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: PARED_IZQUIERDA
+    spriteName: PARED_IZQUIERDA
+    isGroup: 0
+    parentIndex: 0
+    spriteID: e67dbce6563451a428d492c7734db227
+    layerID: 76
+    mosaicPosition: {x: 33, y: 227}
     flatten: 0
     isImported: 1
     isVisible: 1

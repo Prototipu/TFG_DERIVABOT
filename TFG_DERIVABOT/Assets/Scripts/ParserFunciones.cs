@@ -118,6 +118,36 @@ namespace Derivadas_LIB
 
         public static string FormatearFuncion(Funcion funcion)
         {
+            Type Ftype = funcion.GetType();
+
+            switch (funcion)
+            {
+                case Incognita i:
+                    return $"X {i.K} {i.Exponente}";
+
+                case Potencial p:
+                    return $"POT {p.K} {p.Exponente} {FormatearFuncion(p.Fx)}";
+
+                case Exponencial e:
+                    return $"EXP {FormatearFuncion(e.Fx)}";
+
+                case Logaritmica l:
+                    return $"LOG {FormatearFuncion(l.Fx)}";
+
+                case Suma s:
+                    return $"SUM {FormatearFuncion(s.Ux)} {FormatearFuncion(s.Vx)}";
+
+                case Resta r:
+                    return $"RES {FormatearFuncion(r.Ux)} {FormatearFuncion(r.Vx)}";
+
+                case Multiplicacion m:
+                    return $"MUL {FormatearFuncion(m.Ux)} {FormatearFuncion(m.Vx)}";
+
+                case Division div:
+                    return $"DIV {FormatearFuncion(div.Ux)} {FormatearFuncion(div.Vx)}";
+
+            }
+
             return "";
         }
 
