@@ -33,6 +33,11 @@ namespace Derivadas_LIB.Funciones
             return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(p, Fx.Derivada());
         }
 
+        public override void Swap(Funcion oldFx, Funcion newFx)
+        {
+            Init(K, newFx, Exponente);
+        }
+
         public override object Clone()
         {
             return ManagerFunciones.Instance.GetFuncion<Potencial>(K, (Funcion)Fx.Clone(), Exponente);

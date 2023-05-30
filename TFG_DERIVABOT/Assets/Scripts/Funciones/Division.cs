@@ -10,7 +10,7 @@ namespace Derivadas_LIB.Funciones
 {
     public class Division : Funcion
     {
-        public Funcion Ux,Vx;
+        public Funcion Ux, Vx;
 
         [SerializeField]
         private Anclajes _operador;
@@ -57,6 +57,14 @@ namespace Derivadas_LIB.Funciones
             Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(1, (Funcion)Vx.Clone(), 2);
 
             return ManagerFunciones.Instance.GetFuncion<Division>(r, p);
+        }
+
+        public override void Swap(Funcion oldFx, Funcion newFx)
+        {
+            if (oldFx == Ux)
+                Init(newFx, Vx);
+            else
+                Init(Ux, newFx);
         }
 
         public override object Clone()

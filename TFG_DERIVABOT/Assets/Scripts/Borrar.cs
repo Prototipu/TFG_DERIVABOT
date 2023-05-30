@@ -10,6 +10,8 @@ public class Borrar : MonoBehaviour
 
     public SpriteRenderer space;
 
+    private Funcion f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +31,14 @@ public class Borrar : MonoBehaviour
 
         // MUL DIV X 2 3 SUM X 3 2 X 3 2 RES X 2 3 X 2 3
 
-        Funcion f = ParserFunciones.CrearFuncion("MUL DIV X 2 3 SUM X 3 2 X 3 2 RES X 2 3 X 2 3");
+        f = ParserFunciones.CrearFuncion("MUL RES X 2 3 SUM X 3 2 X 3 2 RES X 2 3 X 2 3");
         Debug.Log(ParserFunciones.ParsearString(f, null));
         Debug.Log(ParserFunciones.FormatearFuncion(f));
+
+
+        ManagerClonacion.SeleccionarFuncion();
+
+
 
         //Destroy(f.gameObject);
 
@@ -40,5 +47,9 @@ public class Borrar : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    private void Test()
+    {
+        //ManagerFunciones.Instance.AcoplarFuncion<Suma>((Funcion)ManagerFunciones.Instance.testResta.Clone(), ManagerFunciones.Instance.testInc);
+        //Debug.Log(ParserFunciones.FormatearFuncion(f));
+    }
 }

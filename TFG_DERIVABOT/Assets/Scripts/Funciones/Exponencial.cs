@@ -46,6 +46,11 @@ namespace Derivadas_LIB.Funciones
             return m;
         }
 
+        public override void Swap(Funcion oldFx, Funcion newFx)
+        {
+            Init(newFx);
+        }
+
         public override object Clone()
         {
             return ManagerFunciones.Instance.GetFuncion<Exponencial>(Fx.Clone());

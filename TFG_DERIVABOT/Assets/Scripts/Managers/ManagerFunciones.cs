@@ -26,27 +26,29 @@ public class ManagerFunciones : MonoBehaviour
     [SerializeField]
     private Funcion _funcionSuperior = null;
 
+    private Dictionary<Funcion, Transform> _arbolFunciones = new Dictionary<Funcion, Transform>();
+
+    private Transform Padre;
+
     public static ManagerFunciones Instance { get; private set; }
 
+    private bool first = true;
+
+
+    public Funcion testResta;
+    public Funcion testInc;
 
     private void Awake()
     {
-        if (!Instance)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Instance._prefabsFunciones = _prefabsFunciones;
-            Destroy(Instance.gameObject);
-        }
+        Instance = this;
+        Padre = new GameObject("Root").transform;
     }
 
     public T GetFuncion<T>(params object[] prms) where T : Funcion
     {
         T funcion = Instantiate(_prefabsFunciones[FunctionTypes[typeof(T)]], Vector3.zero, Quaternion.identity).GetComponent<T>();
         funcion.gameObject.name = funcion.GetType().Name;
+        funcion.transform.parent = Padre;
 
         Funcion uX = null, vX = null;
         GameObject elem1 = null, elem2 = null;
@@ -69,6 +71,15 @@ public class ManagerFunciones : MonoBehaviour
                 uX = prms[0] as Funcion;
                 vX = prms[1] as Funcion;
                 r.Init(uX, vX);
+
+
+                if (first)
+                {
+                    testResta = r;
+                    testInc = vX;
+                }
+
+                first = false;
 
                 elem1 = new GameObject("Ux");
                 elem2 = new GameObject("Vx");
@@ -115,21 +126,63 @@ public class ManagerFunciones : MonoBehaviour
 
         if (elem1 && uX)
         {
+            uX.FuncionSuperior = funcion;
             elem1.transform.parent = funcion.transform;
             uX.transform.parent = elem1.transform;
+
+            _arbolFunciones[uX] = elem1.transform;
         }
         if (elem2 && vX)
         {
+            vX.FuncionSuperior = funcion;
             elem2.transform.parent = funcion.transform;
             vX.transform.parent = elem2.transform;
+
+            _arbolFunciones[vX] = elem2.transform;
         }
 
-        CheckArbolyEscalar(funcion);
+        CheckArbol(funcion);
+        _arbolFunciones[funcion] = Padre;
 
         return funcion;
     }
 
-    private void CheckArbolyEscalar(Funcion nuevaFuncion)
+    public void AcoplarFuncion<T>(Funcion nuevaFuncion, Funcion original) where T : Funcion
+    {
+        Transform root = _arbolFunciones[original];
+
+        Funcion newFx;
+        Funcion superior = original.FuncionSuperior;
+        switch (FunctionTypes[typeof(T)])
+        {
+            case 0: // Suma
+            case 1: // Resta
+            case 2: // Multiplicacion
+                newFx = GetFuncion<T>(original, nuevaFuncion);
+                break;
+            default:
+                throw new Exception($"El acople solo admite suma, resta y multiplicación. Pasaste el tipo {typeof(T)}");
+        }
+
+        if (superior)
+        {
+            newFx.transform.parent = root;
+            superior.Swap(original, newFx);
+
+            newFx = superior;
+            superior = newFx.FuncionSuperior;
+
+            while (superior)
+            {
+                superior.Swap(newFx, newFx);
+
+                newFx = superior;
+                superior = newFx.FuncionSuperior;
+            }
+        }
+    }
+
+    private void CheckArbol(Funcion nuevaFuncion)
     {
         if (!_funcionSuperior)
             _funcionSuperior = nuevaFuncion;
@@ -143,5 +196,4 @@ public class ManagerFunciones : MonoBehaviour
                 _funcionSuperior = nuevaFuncion;
         }
     }
-
 }

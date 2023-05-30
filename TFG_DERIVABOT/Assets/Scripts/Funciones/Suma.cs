@@ -57,6 +57,14 @@ namespace Derivadas_LIB.Funciones
             return ManagerFunciones.Instance.GetFuncion<Suma>(Ux.Derivada(), Vx.Derivada());
         }
 
+        public override void Swap(Funcion oldFx, Funcion newFx)
+        {
+            if (oldFx == Ux)
+                Init(newFx, Vx);
+            else
+                Init(Ux, newFx);
+        }
+
         public override object Clone()
         {
             return ManagerFunciones.Instance.GetFuncion<Suma>(Ux.Clone(), Vx.Clone());

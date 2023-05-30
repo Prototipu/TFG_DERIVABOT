@@ -37,5 +37,9 @@ namespace Derivadas_LIB.Funciones
         {
             return ManagerFunciones.Instance.GetFuncion<Incognita>(K, Exponente);
         }
+
+        public override void Swap(Funcion oldFx, Funcion newFx)
+        {
+        }
     }
 }

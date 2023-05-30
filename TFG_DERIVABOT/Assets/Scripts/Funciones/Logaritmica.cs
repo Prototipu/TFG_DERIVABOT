@@ -24,6 +24,11 @@ namespace Derivadas_LIB.Funciones
             return ManagerFunciones.Instance.GetFuncion<Division>(Fx.Derivada(), Fx.Clone());
         }
 
+        public override void Swap(Funcion oldFx, Funcion newFx)
+        {
+            Init(newFx);
+        }
+
         public override object Clone()
         {
             return ManagerFunciones.Instance.GetFuncion<Logaritmica>(Fx.Clone());
