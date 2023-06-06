@@ -22,6 +22,40 @@ namespace Derivadas_LIB.Funciones
         {
             Ux = uX;
             Vx = vX;
+        }
+
+        public override Funcion Derivada()
+        {
+            Funcion dUx = Ux.Derivada();
+            Funcion dVx = Vx.Derivada();
+
+            if (dUx && dVx)
+                return ManagerFunciones.Instance.GetFuncion<Suma>(dUx, dVx);
+            else if (dUx && !dVx)
+                return dUx;
+            else if (!dUx && dVx)
+                return dVx;
+            else
+                return null;
+        }
+
+        public override void Swap(Funcion oldFx, Funcion newFx)
+        {
+            if (oldFx == Ux)
+                Init(newFx, Vx);
+            else
+                Init(Ux, newFx);
+        }
+
+        public override object Clone()
+        {
+            return ManagerFunciones.Instance.GetFuncion<Suma>(Ux.Clone(), Vx.Clone());
+        }
+
+        public override void Escalar()
+        {
+            Ux.Escalar();
+            Vx.Escalar();
 
             _UxC.EncajarFuncion(Ux, true);
             _VxC.EncajarFuncion(Vx, false);
@@ -52,22 +86,18 @@ namespace Derivadas_LIB.Funciones
             anclajes.GetPunto(Punto.W).position = new Vector2(_UxC.GetPunto(Punto.W).position.x, maxYHorizontal);
         }
 
-        public override Funcion Derivada()
+        public override Funcion CheckEstado()
         {
-            return ManagerFunciones.Instance.GetFuncion<Suma>(Ux.Derivada(), Vx.Derivada());
-        }
+            Ux = Ux.CheckEstado();
+            Vx = Vx.CheckEstado();
 
-        public override void Swap(Funcion oldFx, Funcion newFx)
-        {
-            if (oldFx == Ux)
-                Init(newFx, Vx);
-            else
-                Init(Ux, newFx);
-        }
-
-        public override object Clone()
-        {
-            return ManagerFunciones.Instance.GetFuncion<Suma>(Ux.Clone(), Vx.Clone());
+            if (Ux && Vx)
+                return this;
+            else if (Ux && !Vx)
+                return Ux;
+            else if (!Ux && Vx)
+                return Vx;
+            else return null;
         }
     }
 }

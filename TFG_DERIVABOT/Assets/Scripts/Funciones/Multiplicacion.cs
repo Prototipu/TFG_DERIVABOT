@@ -22,6 +22,52 @@ namespace Derivadas_LIB.Funciones
         {
             Ux = uX;
             Vx = vX;
+        }
+
+        public override Funcion Derivada()
+        {
+            Funcion dUx = Ux.Derivada();
+            Funcion dVx = Vx.Derivada();
+
+
+            Multiplicacion m1 = null, m2 = null;
+
+            if (dUx)
+            {
+                m1 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(dUx, Vx.Clone());
+            }
+            if (dVx)
+            {
+                m2 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ux.Clone(), dVx);
+            }
+
+
+            if (m1 && m2)
+                return ManagerFunciones.Instance.GetFuncion<Suma>(m1, m2);
+            else if (m1 && !m2)
+                return m1;
+            else if (!m1 && m2)
+                return m2;
+            else return null;
+        }
+
+        public override void Swap(Funcion oldFx, Funcion newFx)
+        {
+            if (oldFx == Ux)
+                Init(newFx, Vx);
+            else
+                Init(Ux, newFx);
+        }
+
+        public override object Clone()
+        {
+            return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ux.Clone(), Vx.Clone());
+        }
+
+        public override void Escalar()
+        {
+            Ux.Escalar();
+            Vx.Escalar();
 
             _UxC.EncajarFuncion(Ux, true);
             _VxC.EncajarFuncion(Vx, false);
@@ -52,29 +98,14 @@ namespace Derivadas_LIB.Funciones
             anclajes.GetPunto(Punto.W).position = new Vector2(_UxC.GetPunto(Punto.W).position.x, maxYHorizontal);
         }
 
-        public override Funcion Derivada()
+        public override Funcion CheckEstado()
         {
-            Funcion dUx = Ux.Derivada();
-            Funcion dVx = Vx.Derivada();
+            Ux = Ux.CheckEstado();
+            Vx = Vx.CheckEstado();
 
-            Multiplicacion m1 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(dUx, Vx.Clone());
-
-            Multiplicacion m2 = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ux.Clone(), dVx);
-
-            return ManagerFunciones.Instance.GetFuncion<Suma>(m1, m2);
-        }
-
-        public override void Swap(Funcion oldFx, Funcion newFx)
-        {
-            if (oldFx == Ux)
-                Init(newFx, Vx);
-            else
-                Init(Ux, newFx);
-        }
-
-        public override object Clone()
-        {
-            return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Ux.Clone(), Vx.Clone());
+            if (Ux && Vx)
+                return this;
+            else return null;
         }
     }
 }

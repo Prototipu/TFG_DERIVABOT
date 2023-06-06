@@ -6,15 +6,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public static class ManagerClonacion
+public class ManagerClonacion : Herramienta
 {
     public delegate void DlgAvisoEstado(bool estado, SelectorClonacion.TipoSelector tipo);
 
-    public static event DlgAvisoEstado CambioEstado;
+    public event DlgAvisoEstado CambioEstado;
 
-    private static Funcion _funcionSeleccionada = null, _posicionSeleccionada;
+    private Funcion _funcionSeleccionada = null, _posicionSeleccionada;
 
-    private static Estado _estado = Estado.NINGUNO;
+    private Estado _estado = Estado.NINGUNO;
 
     private enum Estado
     {
@@ -24,15 +24,23 @@ public static class ManagerClonacion
         S_OPERACION
     }
 
+    protected override void IIniciar()
+    {
+        _funcionSeleccionada = null;
+        _posicionSeleccionada = null;
+        _estado = Estado.NINGUNO;
 
-    public static void SeleccionarFuncion()
+        SeleccionarFuncion();
+    }
+
+    public void SeleccionarFuncion()
     {
         _funcionSeleccionada = null;
         CambioEstado?.Invoke(true, SelectorClonacion.TipoSelector.S_FUNCION);
         _estado = Estado.S_FUNCION;
     }
 
-    public static void FuncionSeleccionada(SelectorClonacion selector)
+    public void FuncionSeleccionada(SelectorClonacion selector)
     {
         if (_estado != Estado.S_FUNCION)
             return;
@@ -41,14 +49,14 @@ public static class ManagerClonacion
         SeleccionarPosicion();
     }
 
-    public static void SeleccionarPosicion()
+    public void SeleccionarPosicion()
     {
         _posicionSeleccionada = null;
         CambioEstado?.Invoke(true, SelectorClonacion.TipoSelector.S_POSICION);
         _estado = Estado.S_POSICION;
     }
 
-    public static void PosicionSeleccionada(SelectorClonacion selector)
+    public void PosicionSeleccionada(SelectorClonacion selector)
     {
         if (_estado != Estado.S_POSICION)
             return;
@@ -57,13 +65,13 @@ public static class ManagerClonacion
         SeleccionarOperador();
     }
 
-    public static void SeleccionarOperador()
+    public void SeleccionarOperador()
     {
         _estado = Estado.S_OPERACION;
         OperadorSeleccionado<Suma>();
     }
 
-    public static void OperadorSeleccionado<T>() where T : Funcion
+    public void OperadorSeleccionado<T>() where T : Funcion
     {
         if (_estado != Estado.S_OPERACION)
             return;
@@ -71,15 +79,11 @@ public static class ManagerClonacion
         Salir();
     }
 
-    public static void Salir()
+    protected override void ISalir()
     {
         _funcionSeleccionada = null;
         _posicionSeleccionada = null;
-
-        CambioEstado?.Invoke(false, SelectorClonacion.TipoSelector.S_FUNCION);
-        CambioEstado?.Invoke(false, SelectorClonacion.TipoSelector.S_POSICION);
-            
+        
         _estado = Estado.NINGUNO;
     }
-
 }

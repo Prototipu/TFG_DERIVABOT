@@ -11,15 +11,15 @@ public class SelectorClonacion : MonoBehaviour
         S_POSICION
     }
 
-    public Funcion Fx; 
+    public Funcion Fx;
 
     public TipoSelector Tipo;
 
     [SerializeField]
     private Collider2D _collider;
-   
 
-    private void Awake()
+
+    private void Start()
     {
         if (!_collider)
         {
@@ -28,27 +28,34 @@ public class SelectorClonacion : MonoBehaviour
         }
         else
         {
-            ManagerClonacion.CambioEstado += CambioEstado;
-            gameObject.SetActive(false);
+            ManagerHerramientas.Instance.Clonacion.CambioEstado += CambioEstado;
+            ManagerHerramientas.Instance.Clonacion.OnSalir += Clonacion_OnSalir;
+            if (!ManagerHerramientas.Instance.Clonacion.Iniciada)
+                gameObject.SetActive(false);
         }
+    }
+
+    private void Clonacion_OnSalir()
+    {
+        gameObject.SetActive(false);
     }
 
     private void Update()
     {
-        if(Input.touchCount > 0)
+        if (Input.touchCount > 0)
         {
             Touch t = Input.GetTouch(0);
 
-            if(t.phase == TouchPhase.Began)
+            if (t.phase == TouchPhase.Began)
             {
                 Vector2 posicion = Camera.main.ScreenToWorldPoint(t.position);
 
-                if(_collider.OverlapPoint(posicion))
+                if (_collider.OverlapPoint(posicion))
                 {
                     if (Tipo == TipoSelector.S_FUNCION)
-                        ManagerClonacion.FuncionSeleccionada(this);
+                        ManagerHerramientas.Instance.Clonacion.FuncionSeleccionada(this);
                     else
-                        ManagerClonacion.PosicionSeleccionada(this);
+                        ManagerHerramientas.Instance.Clonacion.PosicionSeleccionada(this);
                 }
             }
         }
@@ -58,5 +65,10 @@ public class SelectorClonacion : MonoBehaviour
     {
         if (tipo == Tipo)
             gameObject.SetActive(estado);
+    }
+
+    private void OnDestroy()
+    {
+        ManagerHerramientas.Instance.Clonacion.CambioEstado -= CambioEstado;
     }
 }

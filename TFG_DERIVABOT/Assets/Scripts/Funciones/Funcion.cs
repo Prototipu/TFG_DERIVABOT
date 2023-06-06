@@ -12,5 +12,7 @@ namespace Derivadas_LIB
         public abstract Funcion Derivada();
         public abstract object Clone();
         public abstract void Swap(Funcion oldFx, Funcion newFx);
+        public abstract void Escalar();
+        public abstract Funcion CheckEstado();
     }
 }

@@ -31,25 +31,22 @@ public class Borrar : MonoBehaviour
 
         // MUL DIV X 2 3 SUM X 3 2 X 3 2 RES X 2 3 X 2 3
 
-        f = ParserFunciones.CrearFuncion("MUL RES X 2 3 SUM X 3 2 X 3 2 RES X 2 3 X 2 3");
-        Debug.Log(ParserFunciones.ParsearString(f, null));
-        Debug.Log(ParserFunciones.FormatearFuncion(f));
+        ManagerFunciones.Instance.InitNivel("MUL DIV MUL X 2 3 X 2 0 SUM X 3 2 X 3 2 RES X 2 0 X 2 0");
 
+        //ManagerHerramientas.Instance.Clonacion.OnSalir += Clonacion_OnSalir;
 
-        ManagerClonacion.SeleccionarFuncion();
+        Invoke("Test", 0.5f);
+    }
 
-
-
-        //Destroy(f.gameObject);
-
-        //Funcion fDx = f.Derivada();
-        //Debug.Log(ParserFunciones.ParsearString(fDx, null));
-
+    private void Clonacion_OnSalir()
+    {
+        Invoke("Test", 0.5f);
     }
 
     private void Test()
     {
-        //ManagerFunciones.Instance.AcoplarFuncion<Suma>((Funcion)ManagerFunciones.Instance.testResta.Clone(), ManagerFunciones.Instance.testInc);
-        //Debug.Log(ParserFunciones.FormatearFuncion(f));
+        //ManagerHerramientas.Instance.IniciarHerramienta(ManagerHerramientas.EHerramienta.Clonacion);
+
+        ManagerHerramientas.Instance.IniciarHerramienta(ManagerHerramientas.EHerramienta.Reciclaje);
     }
 }

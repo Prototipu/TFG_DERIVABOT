@@ -21,7 +21,12 @@ namespace Derivadas_LIB.Funciones
 
         public override Funcion Derivada()
         {
-            return ManagerFunciones.Instance.GetFuncion<Division>(Fx.Derivada(), Fx.Clone());
+            Funcion dFx = Fx.Derivada();
+
+            if (dFx)
+                return ManagerFunciones.Instance.GetFuncion<Division>(dFx, Fx.Clone());
+            else
+                return null;
         }
 
         public override void Swap(Funcion oldFx, Funcion newFx)
@@ -32,6 +37,20 @@ namespace Derivadas_LIB.Funciones
         public override object Clone()
         {
             return ManagerFunciones.Instance.GetFuncion<Logaritmica>(Fx.Clone());
+        }
+
+        public override void Escalar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override Funcion CheckEstado()
+        {
+            Fx = Fx.CheckEstado();
+
+            if (Fx)
+                return this;
+            else return null;
         }
     }
 }

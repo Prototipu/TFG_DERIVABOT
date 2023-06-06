@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -18,6 +19,36 @@ namespace Derivadas_LIB.Funciones
         public void Init(Funcion fX)
         {
             Fx = fX;
+        }
+
+        public override Funcion Derivada()
+        {
+
+            Funcion dFx = Fx.Derivada();
+
+            if (dFx)
+            {
+                Exponencial e = ManagerFunciones.Instance.GetFuncion<Exponencial>(Fx.Clone());
+
+                return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(dFx, e);
+            }
+            else
+                return null;
+        }
+
+        public override void Swap(Funcion oldFx, Funcion newFx)
+        {
+            Init(newFx);
+        }
+
+        public override object Clone()
+        {
+            return ManagerFunciones.Instance.GetFuncion<Exponencial>(Fx.Clone());
+        }
+
+        public override void Escalar()
+        {
+            Fx.Escalar();
 
             Anclajes FxA = Fx.anclajes;
 
@@ -37,23 +68,13 @@ namespace Derivadas_LIB.Funciones
             anclajes.GetPunto(Punto.W).position = new Vector2(min.x, transform.position.y);
         }
 
-        public override Funcion Derivada()
+        public override Funcion CheckEstado()
         {
-            Exponencial e = ManagerFunciones.Instance.GetFuncion<Exponencial>(Fx.Clone());
+            Fx = Fx.CheckEstado();
 
-            Multiplicacion m = ManagerFunciones.Instance.GetFuncion<Multiplicacion>(Fx.Derivada(), e);
-
-            return m;
-        }
-
-        public override void Swap(Funcion oldFx, Funcion newFx)
-        {
-            Init(newFx);
-        }
-
-        public override object Clone()
-        {
-            return ManagerFunciones.Instance.GetFuncion<Exponencial>(Fx.Clone());
+            if (Fx)
+                return this;
+            else return null;
         }
     }
 }

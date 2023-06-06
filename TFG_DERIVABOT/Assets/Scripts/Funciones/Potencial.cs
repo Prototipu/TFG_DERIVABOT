@@ -27,10 +27,16 @@ namespace Derivadas_LIB.Funciones
 
         public override Funcion Derivada()
         {
+            Funcion dFx = Fx.Derivada();
 
-            Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(K * Exponente, Fx.Clone(), Exponente - 1);
+            if (dFx)
+            {
+                Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(K * Exponente, Fx.Clone(), Exponente - 1);
 
-            return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(p, Fx.Derivada());
+                return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(p,dFx);
+            }
+            else
+                return null;
         }
 
         public override void Swap(Funcion oldFx, Funcion newFx)
@@ -41,6 +47,21 @@ namespace Derivadas_LIB.Funciones
         public override object Clone()
         {
             return ManagerFunciones.Instance.GetFuncion<Potencial>(K, (Funcion)Fx.Clone(), Exponente);
+        }
+
+        public override void Escalar()
+        {
+            Fx.Escalar();
+            throw new NotImplementedException();
+        }
+
+        public override Funcion CheckEstado()
+        {
+            Fx = Fx.CheckEstado();
+
+            if (Fx)
+                return this;
+            else return null;
         }
     }
 }

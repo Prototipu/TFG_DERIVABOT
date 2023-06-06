@@ -14,6 +14,11 @@ namespace Derivadas_LIB
 
         public static string ParsearString(Funcion funcion, Type lastType)
         {
+
+
+            if (!funcion)
+                return "-";
+
             bool parCheck = lastType != null;
             bool specialCheck = lastType == typeof(Division) || lastType == typeof(Multiplicacion) ||
                 lastType == typeof(Logaritmica) || lastType == typeof(Exponencial);
@@ -118,7 +123,8 @@ namespace Derivadas_LIB
 
         public static string FormatearFuncion(Funcion funcion)
         {
-            Type Ftype = funcion.GetType();
+            if (!funcion)
+                return "-";
 
             switch (funcion)
             {
@@ -151,78 +157,6 @@ namespace Derivadas_LIB
             return "";
         }
 
-        public static Funcion CrearFuncion(string nivel)
-        {
-            return CrearFuncion(new Queue<string>(nivel.Split(' ')));
-        }
-
-        private static Funcion CrearFuncion(Queue<string> elementos)
-        {
-            Funcion uX = null;
-            Funcion vX = null;
-            int k = 0;
-            int exp = 0;
-
-            switch (elementos.Dequeue())
-            {
-                case "X":
-                    int.TryParse(elementos.Dequeue(), out k);
-                    int.TryParse(elementos.Dequeue(), out exp);
-                    return ManagerFunciones.Instance.GetFuncion<Incognita>(k, exp);
-
-                case "SUM":
-                    uX = CrearFuncion(elementos);
-                    vX = CrearFuncion(elementos);
-                    return ManagerFunciones.Instance.GetFuncion<Suma>(uX, vX);
-
-                case "RES":
-                    uX = CrearFuncion(elementos);
-                    vX = CrearFuncion(elementos);
-                    return ManagerFunciones.Instance.GetFuncion<Resta>(uX, vX);
-
-                case "MUL":
-                    uX = CrearFuncion(elementos);
-                    vX = CrearFuncion(elementos);
-                    return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(uX, vX);
-
-                case "DIV":
-                    uX = CrearFuncion(elementos);
-                    vX = CrearFuncion(elementos);
-                    return ManagerFunciones.Instance.GetFuncion<Division>(uX, vX);
-
-                case "POT":
-                    int.TryParse(elementos.Dequeue(), out k);
-                    int.TryParse(elementos.Dequeue(), out exp);
-                    uX = CrearFuncion(elementos);
-                    return ManagerFunciones.Instance.GetFuncion<Potencial>(k, uX, exp);
-
-                case "EXP":
-                    uX = CrearFuncion(elementos);
-                    return ManagerFunciones.Instance.GetFuncion<Exponencial>(uX);
-
-                case "LOG":
-                    uX = CrearFuncion(elementos);
-                    return ManagerFunciones.Instance.GetFuncion<Logaritmica>(uX);
-            }
-
-            return null;
-        }
-
-        public static Bounds BoundsCombinados(GameObject g)
-        {
-            SpriteRenderer[] renderers = g.GetComponentsInChildren<SpriteRenderer>();
-            if (renderers.Length == 0) return new Bounds();
-
-            Bounds combinedBounds = renderers[0].bounds;
-
-            for (int i = 1; i < renderers.Length; i++)
-            {
-                combinedBounds.Encapsulate(renderers[i].bounds);
-            }
-
-            return combinedBounds;
-        }
-
         public static void ChildCount(Transform parent, ref int count)
         {
             foreach (Transform t in parent)
@@ -231,6 +165,114 @@ namespace Derivadas_LIB
                 ChildCount(t, ref count);
             }
         }
+
+        public static NodoFuncion ConstruirArbolNodal(Funcion funcion)
+        {
+            if (!funcion)
+                return null;
+
+            switch (funcion)
+            {
+                case Incognita i:
+                    return new NIncognita(i.K, i.Exponente, i.Derivado);
+
+                case Potencial p:
+                    return new NFuncionFx(ConstruirArbolNodal(p.Fx), NFuncionFx.Tipo.POT, p.K, p.Exponente);
+
+                case Exponencial e:
+                    return new NFuncionFx(ConstruirArbolNodal(e.Fx), NFuncionFx.Tipo.EXP, null);
+
+                case Logaritmica l:
+                    return new NFuncionFx(ConstruirArbolNodal(l.Fx), NFuncionFx.Tipo.LOG, null);
+
+                case Suma s:
+                    return new NFuncion2Fx(ConstruirArbolNodal(s.Ux), ConstruirArbolNodal(s.Vx), NFuncion2Fx.Tipo.SUM);
+
+                case Resta r:
+                    return new NFuncion2Fx(ConstruirArbolNodal(r.Ux), ConstruirArbolNodal(r.Vx), NFuncion2Fx.Tipo.RES);
+
+                case Multiplicacion m:
+                    return new NFuncion2Fx(ConstruirArbolNodal(m.Ux), ConstruirArbolNodal(m.Vx), NFuncion2Fx.Tipo.MUL);
+
+                case Division div:
+                    return new NFuncion2Fx(ConstruirArbolNodal(div.Ux), ConstruirArbolNodal(div.Vx), NFuncion2Fx.Tipo.DIV);
+            }
+
+            return null;
+        }
     }
 
+
+    public abstract class NodoFuncion
+    {
+        public NodoFuncion Superior;
+
+        public void SetSuperior(NodoFuncion superior)
+        {
+            Superior = superior;
+        }
+    }
+
+
+    public class NFuncionFx : NodoFuncion
+    {
+        public enum Tipo
+        {
+            EXP,
+            LOG,
+            POT
+        }
+
+        public Tipo tipo;
+
+        public object[] Prms;
+
+        public NodoFuncion Inferior;
+
+        public NFuncionFx(NodoFuncion inferior, Tipo t, params object[] prms)
+        {
+            Inferior = inferior;
+            Inferior.SetSuperior(this);
+            Prms = prms;
+            tipo = t;
+        }
+    }
+
+    public class NFuncion2Fx : NodoFuncion
+    {
+        public enum Tipo
+        {
+            SUM,
+            RES,
+            MUL,
+            DIV
+        }
+
+        public Tipo tipo;
+
+        public NodoFuncion Ux, Vx;
+
+        public NFuncion2Fx(NodoFuncion ux, NodoFuncion vx, Tipo t)
+        {
+            Ux = ux;
+            Ux.SetSuperior(this);
+            Vx = vx;
+            Vx.SetSuperior(this);
+            tipo = t;
+        }
+    }
+
+    public class NIncognita : NodoFuncion
+    {
+        public int Exponente;
+        public int K;
+        public bool Derivado;
+
+        public NIncognita(int k, int exp, bool der)
+        {
+            K = k;
+            Exponente = exp;
+            Derivado = der;
+        }
+    }
 }
