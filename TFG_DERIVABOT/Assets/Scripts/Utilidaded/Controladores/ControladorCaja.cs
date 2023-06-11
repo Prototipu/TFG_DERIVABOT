@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class ControladorCaja : MonoBehaviour
+public class ControladorCaja : ControladorC
 {
     [SerializeField]
     private List<Anclajes> _Paredes, _Exterior, _Interior;
@@ -42,7 +42,7 @@ public class ControladorCaja : MonoBehaviour
         _AltoE = _SpriteExt[(int)Punto.E].bounds.size.y;
     }
 
-    public void EncajarFuncion(Funcion funcion, bool izquierda)
+    public override void EncajarFuncion(Funcion funcion, bool izquierda)
     {
         Anclajes an = funcion.anclajes;
 
@@ -147,17 +147,17 @@ public class ControladorCaja : MonoBehaviour
     }
 
 
-    public Transform GetPunto(Punto punto)
+    public override Transform GetPunto(Punto punto)
     {
         return _Exterior[(int)punto].GetPunto(punto);
     }
 
-    public float Altura()
+    public override float Altura()
     {
         return Vector2.Distance(GetPunto(Punto.N).position, GetPunto(Punto.S).position);
     }
 
-    public float Anchura()
+    public override float Anchura()
     {
         return Vector2.Distance(GetPunto(Punto.E).position, GetPunto(Punto.W).position);
     }

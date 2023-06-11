@@ -34,6 +34,10 @@ public class ManagerFunciones : MonoBehaviour
 
     private string _respuesta;
 
+    public delegate void DlgEscalarFuncion(Vector3 pos, Vector2 size);
+
+    public event DlgEscalarFuncion OnFuncionEscalada;
+
     public static ManagerFunciones Instance { get; private set; }
 
     private void Awake()
@@ -46,7 +50,7 @@ public class ManagerFunciones : MonoBehaviour
     {
         _funcionSuperior = CrearFuncionString(nivel);
 
-        _funcionSuperior.Escalar();
+        EscalarFuncion();
 
         //Funcion derivada = _funcionSuperior.Derivada();
 
@@ -88,13 +92,7 @@ public class ManagerFunciones : MonoBehaviour
             newFx.FuncionSuperior = superior;
         }
 
-        if (_funcionSuperior)
-        {
-            while (_funcionSuperior.FuncionSuperior)
-                _funcionSuperior = _funcionSuperior.FuncionSuperior;
-
-            _funcionSuperior.Escalar();
-        }
+        EscalarFuncion();
     }
 
     public void Reciclar(Funcion funcion)
@@ -106,10 +104,8 @@ public class ManagerFunciones : MonoBehaviour
 
         _funcionSuperior = CrearFuncionNodos(nodo);
 
-        if (_funcionSuperior)
-            _funcionSuperior.Escalar();
+        EscalarFuncion();
     }
-
 
     public void Deshacer()
     {
@@ -122,10 +118,26 @@ public class ManagerFunciones : MonoBehaviour
 
             _funcionSuperior = CrearFuncionNodos(nodo);
 
-            _funcionSuperior.Escalar();
+            EscalarFuncion();
         }
     }
 
+
+    private void EscalarFuncion()
+    {
+        if (_funcionSuperior)
+        {
+            while (_funcionSuperior.FuncionSuperior)
+                _funcionSuperior = _funcionSuperior.FuncionSuperior;
+
+            _funcionSuperior.Escalar();
+
+            OnFuncionEscalada?.Invoke(_funcionSuperior.anclajes.Centro(),
+                new Vector2(
+                    _funcionSuperior.anclajes.Anchura(),
+                    _funcionSuperior.anclajes.Altura()));
+        }
+    }
 
     #region Creador
 
@@ -186,7 +198,6 @@ public class ManagerFunciones : MonoBehaviour
 
         return null;
     }
-
 
     private Funcion CrearFuncionNodos(NodoFuncion nodo)
     {

@@ -3,7 +3,6 @@ using Derivadas_LIB.Funciones;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static SelectorClonacion;
 
 public class SelectorReciclaje : MonoBehaviour
 {
@@ -19,12 +18,16 @@ public class SelectorReciclaje : MonoBehaviour
             Destroy(gameObject);
             throw new System.Exception($"No collider found on {gameObject}");
         }
-        else
+        else if (Fx.Reciclable)
         {
             ManagerHerramientas.Instance.Reciclaje.OnIniciar += Reciclaje_OnIniciar; ;
             ManagerHerramientas.Instance.Reciclaje.OnSalir += Reciclaje_OnSalir;
             if (!ManagerHerramientas.Instance.Reciclaje.Iniciada)
                 gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -38,7 +41,7 @@ public class SelectorReciclaje : MonoBehaviour
             {
                 Vector2 posicion = Camera.main.ScreenToWorldPoint(t.position);
 
-                if (_collider.OverlapPoint(posicion) && Fx.Reciclable )
+                if (_collider.OverlapPoint(posicion) && Fx.Reciclable)
                 {
                     Fx.Reciclar();
                 }
@@ -55,5 +58,14 @@ public class SelectorReciclaje : MonoBehaviour
     private void Reciclaje_OnSalir()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        if (Fx.Reciclable)
+        {
+            ManagerHerramientas.Instance.Reciclaje.OnIniciar -= Reciclaje_OnIniciar; ;
+            ManagerHerramientas.Instance.Reciclaje.OnSalir -= Reciclaje_OnSalir;
+        }
     }
 }

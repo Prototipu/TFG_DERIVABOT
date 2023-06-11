@@ -42,6 +42,11 @@ public class Anclajes : MonoBehaviour
         return Puntos[(int)p];
     }
 
+    public Vector3 Centro()
+    {
+        return (GetPunto(Punto.N).position + GetPunto(Punto.S).position + GetPunto(Punto.E).position + GetPunto(Punto.W).position) / 4;
+    }
+
 
 #if !UNITY_EDITOR
     private void Start()

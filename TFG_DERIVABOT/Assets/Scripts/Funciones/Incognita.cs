@@ -71,5 +71,10 @@ namespace Derivadas_LIB.Funciones
                 ManagerFunciones.Instance.Reciclar(this);
             }
         }
+
+        public void Cargar()
+        {
+
+        }
     }
 }
