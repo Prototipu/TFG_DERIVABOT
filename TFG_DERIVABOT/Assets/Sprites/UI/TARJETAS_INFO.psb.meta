@@ -1,0 +1,591 @@
+fileFormatVersion: 2
+guid: 81bd50f0761437048a7e0097248b0629
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: b2a9591990af98743ba3ff7cf1000886, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 1
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    isReadable: 0
+    streamingMipmaps: 1
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMasterTextureLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  spriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 0, y: 0}
+  mosaicSpriteImportData: []
+  rigSpriteImportData:
+  - name: Flecha
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 941
+      y: 51
+      width: 77
+      height: 51
+    spriteID: f01489fd5e0815a4c9fa35f169d2c8cb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 391, y: -124}
+  - name: Flecha
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 270
+      y: 201
+      width: 77
+      height: 51
+    spriteID: 9674b555927dcda4aa51f88ad2d7087a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3, y: 26}
+  - name: Capa 2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 137
+      y: 51
+      width: 125
+      height: 193
+    spriteID: 55c01fdd42970b74ebb460c25a0aee1f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -248, y: -52}
+  - name: Capa 1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 51
+      width: 125
+      height: 194
+    spriteID: 9b4355a6d05623544a449f45a459416e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -663, y: -51}
+  - name: 3. Observa como es DERIVADO
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 743
+      y: 4
+      width: 256
+      height: 36
+    spriteID: e9bce7920919bc24d85025e14e77ac16
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 150, y: -46}
+  - name: "2. MANT\xC9N PRESIONADO SOBRE EL ROBOT"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 423
+      y: 51
+      width: 252
+      height: 61
+    spriteID: c5b4ea762a50ef44c927ed838fa248a7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 106, y: 23}
+  - name: ICONO_CABLE
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 270
+      y: 51
+      width: 145
+      height: 142
+    spriteID: a9ff4652166e18747b42b22d26c89b23
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 178, y: -78}
+  - name: 1. SELECCIONA LA HERRAMIENTA DE cable
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 683
+      y: 51
+      width: 250
+      height: 58
+    spriteID: 3317e2e664dd8a44899a560425065f9a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 643, y: 23}
+  - name: "ROBOTS con BATER\xCDA"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 731
+      height: 39
+    spriteID: 2fa7242a29755e94e99778fa4eabbf87
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: -70, y: -337}
+  - name: "Rect\xE1ngulo 1"
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1007
+      y: 4
+      width: 0
+      height: 0
+    spriteID: 754c4e94f370c4a48bf7a3e760006913
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 130, y: -396}
+  characterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  sharedRigSpriteImportData: []
+  sharedRigCharacterData:
+    bones: []
+    parts: []
+    dimension: {x: 0, y: 0}
+    characterGroups: []
+    boneReadOnly: 0
+  platformSettings: []
+  mosaicLayers: 1
+  characterMode: 1
+  documentPivot: {x: 0, y: 0}
+  documentAlignment: 7
+  importHiddenLayers: 0
+  layerMappingOption: 2
+  generatePhysicsShape: 0
+  paperDollMode: 0
+  keepDupilcateSpriteName: 1
+  skeletonAssetReferenceID: 
+  spriteCategoryList:
+    categories: []
+  spritePackingTag: 
+  resliceFromLayer: 0
+  mosaicPSDLayers: []
+  rigPSDLayers:
+  - name: RASTERIZADO
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: c3fff4b75981e754f90b9185553aa43b
+    layerID: 18
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: ROBOTS SIN BATERIA
+    spriteName: 
+    isGroup: 0
+    parentIndex: 0
+    spriteID: f1eb456aaf3a6414c81fe57fe712441b
+    layerID: 31
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: SIN RASTERIZAR
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: eafe62aa62f60824b8b4d5ffa41350cd
+    layerID: 16
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "ROBOTS CON BATER\xCDA"
+    spriteName: 
+    isGroup: 1
+    parentIndex: 2
+    spriteID: 451b6db609bf7c948b6181b8d11cc67f
+    layerID: 43
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Flecha
+    spriteName: Flecha
+    isGroup: 0
+    parentIndex: 3
+    spriteID: f01489fd5e0815a4c9fa35f169d2c8cb
+    layerID: 40
+    mosaicPosition: {x: 941, y: 51}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Flecha
+    spriteName: Flecha
+    isGroup: 0
+    parentIndex: 3
+    spriteID: 9674b555927dcda4aa51f88ad2d7087a
+    layerID: 39
+    mosaicPosition: {x: 270, y: 201}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Capa 2
+    spriteName: Capa 2
+    isGroup: 0
+    parentIndex: 3
+    spriteID: 55c01fdd42970b74ebb460c25a0aee1f
+    layerID: 46
+    mosaicPosition: {x: 137, y: 51}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Capa 1
+    spriteName: Capa 1
+    isGroup: 0
+    parentIndex: 3
+    spriteID: 9b4355a6d05623544a449f45a459416e
+    layerID: 45
+    mosaicPosition: {x: 4, y: 51}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: 3. Observa como es DERIVADO
+    spriteName: 3. Observa como es DERIVADO
+    isGroup: 0
+    parentIndex: 3
+    spriteID: e9bce7920919bc24d85025e14e77ac16
+    layerID: 38
+    mosaicPosition: {x: 743, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: "2. MANT\xC9N PRESIONADO SOBRE EL ROBOT"
+    spriteName: "2. MANT\xC9N PRESIONADO SOBRE EL ROBOT"
+    isGroup: 0
+    parentIndex: 3
+    spriteID: c5b4ea762a50ef44c927ed838fa248a7
+    layerID: 37
+    mosaicPosition: {x: 423, y: 51}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: ICONO_CABLE
+    spriteName: ICONO_CABLE
+    isGroup: 0
+    parentIndex: 3
+    spriteID: a9ff4652166e18747b42b22d26c89b23
+    layerID: 44
+    mosaicPosition: {x: 270, y: 51}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: 1. SELECCIONA LA HERRAMIENTA DE cable
+    spriteName: 1. SELECCIONA LA HERRAMIENTA DE cable
+    isGroup: 0
+    parentIndex: 3
+    spriteID: 3317e2e664dd8a44899a560425065f9a
+    layerID: 36
+    mosaicPosition: {x: 683, y: 51}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: "ROBOTS con BATER\xCDA"
+    spriteName: "ROBOTS con BATER\xCDA"
+    isGroup: 0
+    parentIndex: 3
+    spriteID: 2fa7242a29755e94e99778fa4eabbf87
+    layerID: 34
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: "Rect\xE1ngulo 1"
+    spriteName: "Rect\xE1ngulo 1"
+    isGroup: 0
+    parentIndex: 3
+    spriteID: 754c4e94f370c4a48bf7a3e760006913
+    layerID: 33
+    mosaicPosition: {x: 1007, y: 4}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: ROBOTS SIN BATERIA
+    spriteName: 
+    isGroup: 1
+    parentIndex: 2
+    spriteID: 153dff31e8c664b469f4633a38a76819
+    layerID: 14
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: RobotBordes
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 37479b4a4a3ad3b4197ff03e03345ccf
+    layerID: 12
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: RobotDead
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 4e65fbbbf846e0b43a224f97195853b1
+    layerID: 7
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Flecha
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 3041b6ec2e866034ebb071686a6e4b3f
+    layerID: 11
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: Flecha
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 179644c60ae5fa24595983455daee0a8
+    layerID: 9
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: 3. Observa como es reciclado
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 314b450828295c647bda600b56761eaa
+    layerID: 13
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "2. SELECCIONA EL ROBOT SIN BATER\xCDA"
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 0f8e2bfae3ea92f4b9c5fbab6317e5f1
+    layerID: 10
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: 1. SELECCIONA LA HERRAMIENTA DE RECICLAJE
+    spriteName: 
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 001660f3c8c74d24d9ae6faacd95d9ba
+    layerID: 8
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: ICONO_RECICLAR
+    spriteName: ICONO_RECICLAR
+    isGroup: 0
+    parentIndex: 14
+    spriteID: de49e49fff127be45873de5513e2b07e
+    layerID: 6
+    mosaicPosition: {x: 4, y: 51}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "ROBOTS SIN BATER\xCDA"
+    spriteName: "ROBOTS SIN BATER\xCDA"
+    isGroup: 0
+    parentIndex: 14
+    spriteID: f3d2e2400fbf4ea44bbdf30731d37f78
+    layerID: 5
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  - name: "Rect\xE1ngulo 1"
+    spriteName: "Rect\xE1ngulo 1"
+    isGroup: 0
+    parentIndex: 14
+    spriteID: 138e448a9d0abf54090ee8dbd13d7e6e
+    layerID: 3
+    mosaicPosition: {x: 711, y: 4}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
+  sharedRigPSDLayers: []
+  pSDLayerImportSetting: []
+  generateGOHierarchy: 0
+  textureAssetName: 
+  prefabAssetName: 
+  spriteLibAssetName: 
+  skeletonAssetName: 
+  secondarySpriteTextures: []
