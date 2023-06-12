@@ -19,7 +19,7 @@ public class ManagerHerramientas : MonoBehaviour
 
     public ManagerClonacion Clonacion => Herramientas[EHerramienta.Clonacion] as ManagerClonacion;
     public ManagerReciclaje Reciclaje => Herramientas[EHerramienta.Reciclaje] as ManagerReciclaje;
-    public ManagerCable Carga => Herramientas[EHerramienta.Cable] as ManagerCable;
+    public ManagerCable Cable => Herramientas[EHerramienta.Cable] as ManagerCable;
     public ManagerEmpaquetado Empaquetado => Herramientas[EHerramienta.Empaquetado] as ManagerEmpaquetado;
 
     public enum EHerramienta
@@ -46,7 +46,7 @@ public class ManagerHerramientas : MonoBehaviour
             ManejarSalida(EHerramienta.Reciclaje);
         };
 
-        Carga.OnSalir += () =>
+        Cable.OnSalir += () =>
         {
             ManejarSalida(EHerramienta.Cable);
         };

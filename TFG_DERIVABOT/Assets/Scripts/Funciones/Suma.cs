@@ -13,7 +13,7 @@ namespace Derivadas_LIB.Funciones
         public Funcion Vx;
 
         [SerializeField]
-        private ControladorCaja _UxC, _VxC;
+        private ControladorC _UxC, _VxC;
 
         [SerializeField]
         private Transform _Operador;
