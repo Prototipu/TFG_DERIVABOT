@@ -17,10 +17,9 @@ namespace Derivadas_LIB.Funciones
         public bool Reciclable = false;
         private bool Reciclado = false;
 
-        //[SerializeField]
-        //private TMP_Text _textoBateria, _textoEnergia;
-        //[SerializeField]
-        //private GameObject _bateria;
+
+        [SerializeField]
+        private TMP_Text _textoBateria, _textoEnergia;
 
         [SerializeField]
         private GameObject _robot;

@@ -96,7 +96,7 @@ public class SelectorCable : MonoBehaviour
 
         float progreso = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-        _animator.Play("RobotDerivadoInverso", 0, 1 - progreso);
+        _animator.Play("RobotDerivadoInverso", 0, progreso);
     }
 
 
