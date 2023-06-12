@@ -465,6 +465,8 @@ MonoBehaviour:
   K: 50
   Derivado: 0
   Reciclable: 0
+  _textoK: {fileID: 4324369537280025118}
+  _textoExponente: {fileID: 560073681530226706}
   _robot: {fileID: 0}
 --- !u!1001 &979044346157628354
 PrefabInstance:

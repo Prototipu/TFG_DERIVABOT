@@ -31,7 +31,7 @@ public class Borrar : MonoBehaviour
 
         // MUL DIV X 2 3 SUM X 3 2 X 3 2 RES X 2 3 X 2 3
 
-        ManagerFunciones.Instance.InitNivel("DIV X 3 2 X 3 2");
+        ManagerFunciones.Instance.InitNivel("DIV X 5 62 X 3 2");
 
         ManagerHerramientas.Instance.Clonacion.OnSalir += Clonacion_OnSalir;
 

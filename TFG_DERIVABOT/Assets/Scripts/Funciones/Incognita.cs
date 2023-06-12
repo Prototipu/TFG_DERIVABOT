@@ -19,16 +19,16 @@ namespace Derivadas_LIB.Funciones
 
 
         [SerializeField]
-        private TMP_Text _textoBateria, _textoEnergia;
-
-        [SerializeField]
-        private GameObject _robot;
+        private TMP_Text _textoK, _textoExponente;
 
         public void Init(int k, int exponente, bool derivado)
         {
             Exponente = exponente;
             K = k;
             Derivado = derivado;
+
+            _textoK.text = k.ToString();
+            _textoExponente.text = exponente.ToString();
 
             if (!Derivado && exponente == 0)
             {
