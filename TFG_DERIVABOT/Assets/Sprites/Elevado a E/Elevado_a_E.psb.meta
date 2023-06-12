@@ -91,7 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: e
+  - name: Grupo 1 copia
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -100,9 +100,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 130
-      height: 145
-    spriteID: 3caebf726daeeca4881c0f755865b90e
+      width: 484
+      height: 291
+    spriteID: bce93f05f98e6b1448f414f7f923d5db
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -111,364 +111,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: -223, y: -154}
-  - name: "Rect\xE1ngulo 1"
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 261
-      width: 0
-      height: 0
-    spriteID: e0a7e1f83ee06ef40b52cbb525d3a958
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -519, y: -319}
-  - name: "Rect\xE1ngulo 2 copia"
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 92
-      y: 261
-      width: 0
-      height: 0
-    spriteID: 6c320a2b30fcc704c90f7464bfe67002
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -511, y: -319}
-  - name: "Rect\xE1ngulo 2"
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 100
-      y: 261
-      width: 0
-      height: 0
-    spriteID: 1ef1edc1c71b74247b9cffeaada76d55
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -503, y: -319}
-  - name: Ojo derecho
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 228
-      width: 19
-      height: 25
-    spriteID: 447a6b86bcec97a4f9aa0957fb4323c8
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -329, y: -274}
-  - name: Ojo izquierdo
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 111
-      y: 228
-      width: 19
-      height: 25
-    spriteID: bcc8e0e7d3dc722419289d0c270eda7d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -271, y: -274}
-  - name: Torso
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 157
-      width: 72
-      height: 115
-    spriteID: 6a7832e96bcc3a04d8c42630376692b6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -383, y: -274}
-  - name: Ruedas
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 142
-      y: 166
-      width: 84
-      height: 18
-    spriteID: da7f153ef73eefa46bad89242d8dca1f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -239, y: -230}
-  - name: "Energ\xEDa"
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 74
-      y: 403
-      width: 57
-      height: 75
-    spriteID: c9a6f6ab5af708d42bf9711fa0cb1745
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -320, y: -102}
-  - name: Mochila
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 403
-      width: 62
-      height: 71
-    spriteID: ac79c677c6ad4f8409564edd4f510d89
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -434, y: -41}
-  - name: Base
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 212
-      y: 4
-      width: 25
-      height: 63
-    spriteID: a30802b9e71cbc74f909648b0c7587f2
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -198, y: -395}
-  - name: Ojo derecho
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 482
-      width: 19
-      height: 25
-    spriteID: a70d39294506bc34b80507a3981e0bb4
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -136, y: -20}
-  - name: Ojo izquierdo
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 31
-      y: 482
-      width: 19
-      height: 25
-    spriteID: 22cc91b5f22353742a1f2baa5489abef
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -78, y: -20}
-  - name: Torso
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 280
-      width: 72
-      height: 115
-    spriteID: e2039fb6a371d4448ac23f54f55381cb
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -110, y: -151}
-  - name: Ruedas
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 142
-      y: 192
-      width: 84
-      height: 18
-    spriteID: b91461db876f685458a77fbcb9619e84
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 34, y: -204}
-  - name: "Energ\xEDa"
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 142
-      y: 83
-      width: 57
-      height: 75
-    spriteID: f35a8c980b9cc9f489051c5db4791e3a
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 21, y: -422}
-  - name: Mochila
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 142
-      y: 4
-      width: 62
-      height: 71
-    spriteID: c66e81b2d8680e94faa775654e9acd24
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -23, y: -440}
-  - name: Base
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 84
-      y: 157
-      width: 25
-      height: 63
-    spriteID: 472bd9b9e66b3514c8d3d63a211913e6
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: -53, y: -242}
+    uvTransform: {x: 4, y: 4}
   characterData:
     bones: []
     parts: []
@@ -499,45 +142,65 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
-  - name: e
-    spriteName: e
+  - name: Grupo 1 copia
+    spriteName: Grupo 1 copia
     isGroup: 0
     parentIndex: -1
-    spriteID: 3caebf726daeeca4881c0f755865b90e
-    layerID: 59
+    spriteID: bce93f05f98e6b1448f414f7f923d5db
+    layerID: 68
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
+  - name: Grupo 1
+    spriteName: 
+    isGroup: 1
+    parentIndex: -1
+    spriteID: 00000000000000000000000000000000
+    layerID: 61
+    mosaicPosition: {x: 0, y: 0}
+    flatten: 0
+    isImported: 0
+    isVisible: 0
+  - name: e
+    spriteName: e
+    isGroup: 0
+    parentIndex: 1
+    spriteID: 3caebf726daeeca4881c0f755865b90e
+    layerID: 59
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 0
+    isVisible: 1
   - name: "Rect\xE1ngulo 1"
     spriteName: "Rect\xE1ngulo 1"
     isGroup: 0
-    parentIndex: -1
+    parentIndex: 1
     spriteID: e0a7e1f83ee06ef40b52cbb525d3a958
     layerID: 56
     mosaicPosition: {x: 84, y: 261}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: "Rect\xE1ngulo 2 copia"
     spriteName: "Rect\xE1ngulo 2 copia"
     isGroup: 0
-    parentIndex: -1
+    parentIndex: 1
     spriteID: 6c320a2b30fcc704c90f7464bfe67002
     layerID: 58
     mosaicPosition: {x: 92, y: 261}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: "Rect\xE1ngulo 2"
     spriteName: "Rect\xE1ngulo 2"
     isGroup: 0
-    parentIndex: -1
+    parentIndex: 1
     spriteID: 1ef1edc1c71b74247b9cffeaada76d55
     layerID: 57
     mosaicPosition: {x: 100, y: 261}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Rasterizado copia
     spriteName: 
@@ -548,76 +211,76 @@ ScriptedImporter:
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
     isImported: 0
-    isVisible: 1
+    isVisible: 0
   - name: Ojo derecho
     spriteName: Ojo derecho
     isGroup: 0
-    parentIndex: 4
+    parentIndex: 6
     spriteID: 447a6b86bcec97a4f9aa0957fb4323c8
     layerID: 53
     mosaicPosition: {x: 84, y: 228}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Ojo izquierdo
     spriteName: Ojo izquierdo
     isGroup: 0
-    parentIndex: 4
+    parentIndex: 6
     spriteID: bcc8e0e7d3dc722419289d0c270eda7d
     layerID: 52
     mosaicPosition: {x: 111, y: 228}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Torso
     spriteName: Torso
     isGroup: 0
-    parentIndex: 4
+    parentIndex: 6
     spriteID: 6a7832e96bcc3a04d8c42630376692b6
     layerID: 51
     mosaicPosition: {x: 4, y: 157}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Ruedas
     spriteName: Ruedas
     isGroup: 0
-    parentIndex: 4
+    parentIndex: 6
     spriteID: da7f153ef73eefa46bad89242d8dca1f
     layerID: 50
     mosaicPosition: {x: 142, y: 166}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: "Energ\xEDa"
     spriteName: "Energ\xEDa"
     isGroup: 0
-    parentIndex: 4
+    parentIndex: 6
     spriteID: c9a6f6ab5af708d42bf9711fa0cb1745
     layerID: 49
     mosaicPosition: {x: 74, y: 403}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Mochila
     spriteName: Mochila
     isGroup: 0
-    parentIndex: 4
+    parentIndex: 6
     spriteID: ac79c677c6ad4f8409564edd4f510d89
     layerID: 48
     mosaicPosition: {x: 4, y: 403}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Base
     spriteName: Base
     isGroup: 0
-    parentIndex: 4
+    parentIndex: 6
     spriteID: a30802b9e71cbc74f909648b0c7587f2
     layerID: 47
     mosaicPosition: {x: 212, y: 4}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Rasterizado
     spriteName: 
@@ -628,76 +291,76 @@ ScriptedImporter:
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
     isImported: 0
-    isVisible: 1
+    isVisible: 0
   - name: Ojo derecho
     spriteName: Ojo derecho
     isGroup: 0
-    parentIndex: 12
+    parentIndex: 14
     spriteID: a70d39294506bc34b80507a3981e0bb4
     layerID: 28
     mosaicPosition: {x: 4, y: 482}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Ojo izquierdo
     spriteName: Ojo izquierdo
     isGroup: 0
-    parentIndex: 12
+    parentIndex: 14
     spriteID: 22cc91b5f22353742a1f2baa5489abef
     layerID: 27
     mosaicPosition: {x: 31, y: 482}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Torso
     spriteName: Torso
     isGroup: 0
-    parentIndex: 12
+    parentIndex: 14
     spriteID: e2039fb6a371d4448ac23f54f55381cb
     layerID: 26
     mosaicPosition: {x: 4, y: 280}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Ruedas
     spriteName: Ruedas
     isGroup: 0
-    parentIndex: 12
+    parentIndex: 14
     spriteID: b91461db876f685458a77fbcb9619e84
     layerID: 25
     mosaicPosition: {x: 142, y: 192}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: "Energ\xEDa"
     spriteName: "Energ\xEDa"
     isGroup: 0
-    parentIndex: 12
+    parentIndex: 14
     spriteID: f35a8c980b9cc9f489051c5db4791e3a
     layerID: 24
     mosaicPosition: {x: 142, y: 83}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Mochila
     spriteName: Mochila
     isGroup: 0
-    parentIndex: 12
+    parentIndex: 14
     spriteID: c66e81b2d8680e94faa775654e9acd24
     layerID: 23
     mosaicPosition: {x: 142, y: 4}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Base
     spriteName: Base
     isGroup: 0
-    parentIndex: 12
+    parentIndex: 14
     spriteID: 472bd9b9e66b3514c8d3d63a211913e6
     layerID: 22
     mosaicPosition: {x: 84, y: 157}
     flatten: 0
-    isImported: 1
+    isImported: 0
     isVisible: 1
   - name: Capa 1
     spriteName: 
