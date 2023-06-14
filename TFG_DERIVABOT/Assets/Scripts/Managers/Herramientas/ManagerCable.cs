@@ -6,11 +6,11 @@ public class ManagerCable : Herramienta
 {
     protected override void IIniciar()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     protected override void ISalir()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }

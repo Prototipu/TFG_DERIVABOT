@@ -12,9 +12,9 @@ public class SelectorCable : MonoBehaviour
     private Collider2D _collider;
 
     [SerializeField]
-    private Animator _animator;
+    private ControladorAnimacionesInc _animator;
 
-    private bool _cargando;
+    private bool _cargando, _init = false;
 
     private
 
@@ -25,10 +25,11 @@ public class SelectorCable : MonoBehaviour
             Destroy(gameObject);
             throw new System.Exception($"No collider or animator found on {gameObject}");
         }
-        else if (!Fx.Reciclable)
+        else if (!Fx.Reciclable && !Fx.Derivado)
         {
-            ManagerHerramientas.Instance.Cable.OnIniciar += Cable_OnIniciar; ; ;
-            ManagerHerramientas.Instance.Cable.OnSalir += Cable_OnSalir; ; ;
+            _init = true;
+            ManagerHerramientas.Instance.Cable.OnIniciar += Cable_OnIniciar;
+            ManagerHerramientas.Instance.Cable.OnSalir += Cable_OnSalir;
             if (!ManagerHerramientas.Instance.Reciclaje.Iniciada)
                 gameObject.SetActive(false);
         }
@@ -76,15 +77,16 @@ public class SelectorCable : MonoBehaviour
                         CancelarCarga();
                     break;
             }
+        }
 
-            if (_cargando)
+        if (_cargando)
+        {
+            AnimatorStateInfo info = _animator.GetEstado();
+            if (info.normalizedTime >= 1 && !info.loop)
             {
-                AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
-                if (info.normalizedTime >= 1 && !info.loop)
-                {
-                    _cargando = false;
-                    Fx.Cargar();
-                }
+                _cargando = false;
+                Fx.Cargar();
+                Destroy(gameObject);
             }
         }
     }
@@ -92,17 +94,19 @@ public class SelectorCable : MonoBehaviour
 
     private void CancelarCarga()
     {
+        Debug.Log("Cancelando Carga");
+
         _cargando = false;
 
-        float progreso = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        float progreso = _animator.GetEstado().normalizedTime;
 
-        _animator.Play("RobotDerivadoInverso", 0, progreso);
+        _animator.Play("RobotDerivadoInverso", 0, 1 - progreso);
     }
 
 
     private void OnDestroy()
     {
-        if (!Fx.Reciclable)
+        if (_init)
         {
             ManagerHerramientas.Instance.Cable.OnIniciar -= Cable_OnIniciar;
             ManagerHerramientas.Instance.Cable.OnSalir += Cable_OnSalir;

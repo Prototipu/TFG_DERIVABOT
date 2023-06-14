@@ -52,25 +52,24 @@ public class ManagerFunciones : MonoBehaviour
 
         EscalarFuncion();
 
-        //Funcion derivada = _funcionSuperior.Derivada();
+        Funcion derivada = _funcionSuperior.Derivada();
 
-        //_respuesta = ParserFunciones.FormatearFuncion(derivada);
+        _respuesta = ParserFunciones.FormatearFuncion(derivada);
 
-
-        //Debug.Log($"Nivel cargado: {ParserFunciones.FormatearFuncion(_funcionSuperior)}");
-        //Debug.Log($"Respuesta esperada: {_respuesta}");
+        Debug.Log($"Nivel cargado: {ParserFunciones.FormatearFuncion(_funcionSuperior)}");
+        Debug.Log($"Respuesta esperada: {_respuesta}");
 
 
         //Debug.Log($"Nivel cargado: {ParserFunciones.ParsearString(_funcionSuperior, null)}");
         //Debug.Log($"Respuesta esperada: {ParserFunciones.ParsearString(derivada, null)}");
 
-        //if (derivada)
-        //    Destroy(derivada.gameObject);
+        if (derivada)
+            Destroy(derivada.gameObject);
     }
 
     public void AcoplarFuncion<T>(Funcion nuevaFuncion, Funcion original) where T : Funcion
     {
-        _stackFunciones.Push(ParserFunciones.ConstruirArbolNodal(_funcionSuperior));
+        GuardarStack();
 
         Funcion newFx;
         Funcion superior = original.FuncionSuperior;
@@ -97,7 +96,7 @@ public class ManagerFunciones : MonoBehaviour
 
     public void Reciclar(Funcion funcion)
     {
-        _stackFunciones.Push(ParserFunciones.ConstruirArbolNodal(_funcionSuperior));
+        GuardarStack();
         NodoFuncion nodo = ParserFunciones.ConstruirArbolNodal(_funcionSuperior.CheckEstado());
 
         Destroy(_funcionSuperior.gameObject);
@@ -122,6 +121,15 @@ public class ManagerFunciones : MonoBehaviour
         }
     }
 
+    public void GuardarStack()
+    {
+        _stackFunciones.Push(ParserFunciones.ConstruirArbolNodal(_funcionSuperior));
+    }
+
+    public bool CheckResultado()
+    {
+        return ParserFunciones.FormatearFuncion(_funcionSuperior) == _respuesta;
+    }
 
     private void EscalarFuncion()
     {
@@ -140,7 +148,6 @@ public class ManagerFunciones : MonoBehaviour
     }
 
     #region Creador
-
 
     private Funcion CrearFuncionString(string nivel)
     {

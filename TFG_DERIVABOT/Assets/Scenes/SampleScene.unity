@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camara: {fileID: 519420031}
   _velocidadPan: 1
-  _velocidadZoom: 0.5
+  _velocidadZoom: 0.05
 --- !u!1 &628448647
 GameObject:
   m_ObjectHideFlags: 0

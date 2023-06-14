@@ -21,6 +21,9 @@ namespace Derivadas_LIB.Funciones
         [SerializeField]
         private TMP_Text _textoK, _textoExponente;
 
+        [SerializeField]
+        private ControladorAnimacionesInc _animator;
+
         public void Init(int k, int exponente, bool derivado)
         {
             Exponente = exponente;
@@ -33,7 +36,11 @@ namespace Derivadas_LIB.Funciones
             if (!Derivado && exponente == 0)
             {
                 Reciclable = true;
-                ; // TODO CAMBIAR SPRITE A RECICLABLE
+                _animator.Play("NoEnergy", true);
+            }
+            else if (Derivado)
+            {
+                _animator.Play("RobotVerde", true);
             }
         }
 
@@ -74,6 +81,15 @@ namespace Derivadas_LIB.Funciones
         public void Cargar()
         {
 
+            ManagerFunciones.Instance.GuardarStack();
+
+            K *= Exponente;
+            Exponente--;
+
+            _textoK.text = K.ToString();
+            _textoExponente.text = Exponente.ToString();
+
+            _animator.Play("RobotVerde", true);
         }
     }
 }

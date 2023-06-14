@@ -422,6 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1358358931227950087}
   - component: {fileID: 5832240395134279424}
+  - component: {fileID: 5485173099039102665}
   m_Layer: 0
   m_Name: Incognita
   m_TagString: Untagged
@@ -467,7 +468,20 @@ MonoBehaviour:
   Reciclable: 0
   _textoK: {fileID: 4324369537280025118}
   _textoExponente: {fileID: 560073681530226706}
-  _robot: {fileID: 0}
+  _animator: {fileID: 5485173099039102665}
+--- !u!114 &5485173099039102665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024764047650238201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34fd320ebd9523e4c804c9bfd802fd9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 5531491805779338267}
 --- !u!1001 &979044346157628354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,7 +562,7 @@ PrefabInstance:
     - target: {fileID: 9122698707294434, guid: 3b1aca2f72530d441953aadaabfbe6ef, type: 3}
       propertyPath: _animator
       value: 
-      objectReference: {fileID: 5531491805779338267}
+      objectReference: {fileID: 5485173099039102665}
     - target: {fileID: 2343384332805877517, guid: 3b1aca2f72530d441953aadaabfbe6ef, type: 3}
       propertyPath: m_Name
       value: SelectorCable
