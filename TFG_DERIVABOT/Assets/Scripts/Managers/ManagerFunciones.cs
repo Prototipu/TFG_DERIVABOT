@@ -46,8 +46,7 @@ public class ManagerFunciones : ManagerI
     {
         //InitNivel(GameManager.Instance.GetNivelActual());
 
-        //InitNivel("LOG EXP MUL SUM X 3 2 X 2 0 X 4 5");
-        InitNivel("EXP X 3 2");
+        InitNivel("LOG EXP MUL SUM X 3 2 X 2 0 DIV X 4 5 SUM X 3 2 X 2 1");
     }
 
     public void InitNivel(string nivel)
