@@ -2,11 +2,12 @@ using Derivadas_LIB.Funciones;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManagerUILevel : ManagerI
 {
     [SerializeField]
-    private Movimiento _panelOperadores, _botonDeshacer, _botonSalirHerr;
+    private Movimiento _panelOperadores, _botonDeshacer, _botonSalirHerr, _botonCheck;
 
     [SerializeField]
     private HerramientaSeleccionada _panelHerrSeleccionada;
@@ -22,6 +23,7 @@ public class ManagerUILevel : ManagerI
     {
         _botonDeshacer.MoverRect(false);
         _botonSalirHerr.MoverRect(true);
+        _botonCheck.MoverRect(false);
 
         _panelHerrSeleccionada.SeleccionarHerramienta(herramienta);
     }
@@ -44,12 +46,19 @@ public class ManagerUILevel : ManagerI
     {
         _botonDeshacer.MoverRect(true);
         _botonSalirHerr.MoverRect(false);
+        _botonCheck.MoverRect(true);
 
         _panelHerrSeleccionada.Salir();
 
         if (_panelOperadores.Inicio)
             _panelOperadores.MoverRect(false);
 
+    }
+
+    public void CheckResultado()
+    {
+        if (!_botonCheck.EnMovimiento && _botonCheck.Inicio)
+            Debug.Log(_group.Funciones.CheckResultado());
     }
 
     public void PanelSelecionOperadores()
@@ -80,5 +89,10 @@ public class ManagerUILevel : ManagerI
 
             _panelOperadores.MoverRect(false);
         }
+    }
+
+    public void VolverAlSelector()
+    {
+        SceneManager.LoadScene("SelectorNiveles");
     }
 }

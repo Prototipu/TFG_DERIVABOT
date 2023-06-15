@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    private string _nivelActual = "";
+    private string _nivelActual = "SUM X 2 3 X 4 1";
 
     private void Awake()
     {
