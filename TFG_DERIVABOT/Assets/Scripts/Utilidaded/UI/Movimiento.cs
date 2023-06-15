@@ -14,11 +14,14 @@ public class Movimiento : MonoBehaviour
     public bool EnMovimiento => _movimiento;
 
     private bool _inicio = true;
+    public bool Inicio => _inicio;
 
 
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
+
+        _inicio = _rectTransform.anchoredPosition == _p1;
     }
 
     public void MoverRect()

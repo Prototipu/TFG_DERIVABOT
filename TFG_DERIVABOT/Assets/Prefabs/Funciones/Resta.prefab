@@ -431,7 +431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4582255227219884381, guid: be89d9a449c366746b3fabccbc5a300b, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.854902
       objectReference: {fileID: 0}
     - target: {fileID: 7398057559413968092, guid: be89d9a449c366746b3fabccbc5a300b, type: 3}
       propertyPath: m_IsActive

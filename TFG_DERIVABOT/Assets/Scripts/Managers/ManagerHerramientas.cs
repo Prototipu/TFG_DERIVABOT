@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static ManagerHerramientas;
+
 public class ManagerHerramientas : ManagerI
 {
 
@@ -68,10 +70,15 @@ public class ManagerHerramientas : ManagerI
         if (herramienta == EHerramienta.Ninguna)
             throw new System.Exception("No puedes inciar la herramienta Ninguna");
 
-        Herramientas[herramienta].Iniciar();
-        _herramienta = herramienta;
-
         _group.LevelUI.HerramientaSeleccionada(herramienta);
+
+        _herramienta = herramienta;
+        Invoke("IniciarDelay", 0.3f);
+    }
+
+    public void IniciarDelay()
+    {
+        Herramientas[_herramienta].Iniciar();
     }
 
 

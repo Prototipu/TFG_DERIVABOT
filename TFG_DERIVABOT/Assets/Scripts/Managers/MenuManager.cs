@@ -10,7 +10,6 @@ public class MenuManager : MonoBehaviour
     string lastScene;
     public void ButtonClickedLoadScene(string scene) 
     {
-        
         SceneManager.LoadScene(scene);
     }
 
@@ -22,4 +21,9 @@ public class MenuManager : MonoBehaviour
             Application.Quit();
 #endif
 
+
+    public void PlayClip(string clip)
+    {
+        SoundManager.Instance.PlayClip(clip);
+    }
 }

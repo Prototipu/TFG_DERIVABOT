@@ -6,7 +6,10 @@ using UnityEngine;
 public class ManagerUILevel : ManagerI
 {
     [SerializeField]
-    private Movimiento _panelOperadores, _botonDeshacer, _botonSalirHerr, _panelHerrSeleccionada;
+    private Movimiento _panelOperadores, _botonDeshacer, _botonSalirHerr;
+
+    [SerializeField]
+    private HerramientaSeleccionada _panelHerrSeleccionada;
 
     public static ManagerUILevel Instance { get; private set; }
 
@@ -20,8 +23,7 @@ public class ManagerUILevel : ManagerI
         _botonDeshacer.MoverRect(false);
         _botonSalirHerr.MoverRect(true);
 
-        _panelHerrSeleccionada.MoverRect(true);
-        // Cambiar icono en panel
+        _panelHerrSeleccionada.SeleccionarHerramienta(herramienta);
     }
 
 
@@ -43,7 +45,11 @@ public class ManagerUILevel : ManagerI
         _botonDeshacer.MoverRect(true);
         _botonSalirHerr.MoverRect(false);
 
-        _panelHerrSeleccionada.MoverRect(false);
+        _panelHerrSeleccionada.Salir();
+
+        if (_panelOperadores.Inicio)
+            _panelOperadores.MoverRect(false);
+
     }
 
     public void PanelSelecionOperadores()

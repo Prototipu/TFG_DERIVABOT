@@ -42,6 +42,11 @@ public class ManagerFunciones : ManagerI
         Root = new GameObject("Root").transform;
     }
 
+    private void Start()
+    {
+        InitNivel(GameManager.Instance.GetNivelActual());
+    }
+
     public void InitNivel(string nivel)
     {
         _funcionSuperior = CrearFuncionString(nivel);

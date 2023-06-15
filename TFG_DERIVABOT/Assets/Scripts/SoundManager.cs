@@ -5,22 +5,47 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioClip[] soundClips;
-    private Button button;
-    private AudioSource audioSource;
+    public AudioClip[] SoundClips;
 
-    private void Start()
+    private Dictionary<string, AudioSource> _sources = new Dictionary<string, AudioSource>();
+
+    public static SoundManager Instance;
+
+    private void Awake()
     {
-        DontDestroyOnLoad(this);
-        audioSource = GameObject.Find("SoundManager").GetComponent<AudioSource>();
+        if (!Instance)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+
+            foreach (AudioClip clip in SoundClips)
+            {
+                GameObject sourceObject = new GameObject(clip.name);
+                sourceObject.transform.parent = transform;
+
+                AudioSource source = sourceObject.AddComponent<AudioSource>();
+                source.clip = clip;
+
+                _sources.Add(clip.name, source);
+            }
+        }
+        else
+            Destroy(gameObject);
     }
 
-    public void PlaySound(int audioClip)
+    public void PlayClip(string clip, float start = 0)
     {
-        AudioClip selectedClip = soundClips[audioClip];
-        if (selectedClip != null)
+        if (_sources.TryGetValue(clip, out AudioSource audioSource))
         {
-            audioSource.PlayOneShot(selectedClip);
+            audioSource.time = start * audioSource.clip.length;
+            audioSource.Play();
         }
+    }
+
+
+    public void StopClip(string clip)
+    {
+        if (_sources.TryGetValue(clip, out AudioSource audioSource))
+            audioSource.Stop();
     }
 }
