@@ -14,7 +14,22 @@ namespace Derivadas_LIB.Funciones
         public Funcion Fx;
 
         [SerializeField]
-        private Anclajes _operador;
+        private Anclajes _operador, _barra;
+
+        private float _barraEspacioBase;
+
+        private void Awake()
+        {
+            SpriteRenderer barra = _barra.transform.parent.GetComponent<SpriteRenderer>();
+
+            if (!barra)
+            {
+                Destroy(gameObject);
+                throw new Exception($"El exponencial no tiene un SpriteRenderer asignado");
+            }
+
+            _barraEspacioBase = barra.bounds.size.x;
+        }
 
         public void Init(Funcion fX)
         {
@@ -30,7 +45,7 @@ namespace Derivadas_LIB.Funciones
             {
                 Exponencial e = ManagerFunciones.Instance.GetFuncion<Exponencial>(Fx.Clone());
 
-                return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(dFx, e);
+                return ManagerFunciones.Instance.GetFuncion<Multiplicacion>(e, dFx);
             }
             else
                 return null;
@@ -52,20 +67,30 @@ namespace Derivadas_LIB.Funciones
 
             Anclajes FxA = Fx.anclajes;
 
-            FxA.Anclar(_operador.GetPunto(Punto.N), Punto.S);
 
-            Vector2 max = new Vector2(
-                FxA.GetPunto(Punto.E).position.x,
-                FxA.GetPunto(Punto.N).position.y);
+            _barra.Anclar(_operador.GetPunto(Punto.N), Punto.S);
 
-            Vector2 min = new Vector2(
-               FxA.GetPunto(Punto.W).position.x,
-               anclajes.GetPunto(Punto.S).position.y);
+            FxA.Anclar(_barra.GetPunto(Punto.N), Punto.S);
 
-            anclajes.GetPunto(Punto.N).position = new Vector2(transform.position.x, max.y);
-            anclajes.GetPunto(Punto.S).position = new Vector2(transform.position.x, min.y);
-            anclajes.GetPunto(Punto.E).position = new Vector2(max.x, transform.position.y);
-            anclajes.GetPunto(Punto.W).position = new Vector2(min.x, transform.position.y);
+            float maxX = Math.Max(
+                        FxA.GetPunto(Punto.E).position.x,
+                        _operador.GetPunto(Punto.E).position.x);
+
+            float minX = Math.Min(
+                        FxA.GetPunto(Punto.W).position.x,
+                        _operador.GetPunto(Punto.W).position.x);
+
+            float pMedioVertical = (FxA.GetPunto(Punto.N).position.y + _operador.GetPunto(Punto.S).position.y) / 2;
+
+            anclajes.GetPunto(Punto.N).position = new Vector2(transform.position.x, FxA.GetPunto(Punto.N).position.y);
+            anclajes.GetPunto(Punto.S).position = new Vector2(transform.position.x, _operador.GetPunto(Punto.S).position.y);
+            anclajes.GetPunto(Punto.E).position = new Vector2(maxX, pMedioVertical);
+            anclajes.GetPunto(Punto.W).position = new Vector2(minX, pMedioVertical);
+
+
+            float ratio = (maxX - minX) / _barraEspacioBase;
+
+            _barra.transform.parent.localScale = new Vector3(ratio, 0.1f, 1);
         }
 
         public override Funcion CheckEstado()
