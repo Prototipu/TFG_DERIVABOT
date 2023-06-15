@@ -16,7 +16,9 @@ public class ManagerClonacion : Herramienta
 
     private Estado _estado = Estado.NINGUNO;
 
-    private enum Estado
+    public Estado Estd => _estado;
+
+    public enum Estado
     {
         NINGUNO,
         S_FUNCION,
@@ -68,7 +70,7 @@ public class ManagerClonacion : Herramienta
     public void SeleccionarOperador()
     {
         _estado = Estado.S_OPERACION;
-        OperadorSeleccionado<Suma>();
+        ManagerUILevel.Instance.PanelSelecionOperadores();
     }
 
     public void OperadorSeleccionado<T>() where T : Funcion
@@ -76,6 +78,7 @@ public class ManagerClonacion : Herramienta
         if (_estado != Estado.S_OPERACION)
             return;
         ManagerFunciones.Instance.AcoplarFuncion<T>((Funcion)_funcionSeleccionada.Clone(), _posicionSeleccionada);
+
         Salir();
     }
 

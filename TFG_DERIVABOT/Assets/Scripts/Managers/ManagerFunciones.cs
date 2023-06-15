@@ -2,14 +2,10 @@ using Derivadas_LIB;
 using Derivadas_LIB.Funciones;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
 
-public class ManagerFunciones : MonoBehaviour
+public class ManagerFunciones : ManagerI
 {
-
     public static readonly Dictionary<Type, int> FunctionTypes = new Dictionary<Type, int>()
         {
             {typeof(Suma),0 },

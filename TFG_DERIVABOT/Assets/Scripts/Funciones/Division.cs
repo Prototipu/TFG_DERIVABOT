@@ -15,10 +15,22 @@ namespace Derivadas_LIB.Funciones
         [SerializeField]
         private Anclajes _operador;
 
+        private float _operadorEspacioBase;
+
         public void Init(Funcion uX, Funcion vX)
         {
             Ux = uX;
             Vx = vX;
+
+            SpriteRenderer operadorCaja = _operador.transform.parent.GetComponent<SpriteRenderer>();
+
+            if (!operadorCaja)
+            {
+                Destroy(gameObject);
+                throw new Exception($"La division no tiene un SpriteRenderer asignado");
+            }
+
+            _operadorEspacioBase = operadorCaja.bounds.size.x;
         }
 
         public override Funcion Derivada()
@@ -95,6 +107,11 @@ namespace Derivadas_LIB.Funciones
             anclajes.GetPunto(Punto.S).position = new Vector2(transform.position.x, VxA.GetPunto(Punto.S).position.y);
             anclajes.GetPunto(Punto.E).position = new Vector2(maxX, pMedioVertical);
             anclajes.GetPunto(Punto.W).position = new Vector2(minX, pMedioVertical);
+
+
+            float ratio = (maxX - minX) / _operadorEspacioBase;
+
+            _operador.transform.parent.localScale = new Vector3(ratio, 0.1f, 1);
         }
 
         public override Funcion CheckEstado()

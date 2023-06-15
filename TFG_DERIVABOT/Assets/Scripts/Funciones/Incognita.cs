@@ -85,6 +85,7 @@ namespace Derivadas_LIB.Funciones
 
             K *= Exponente;
             Exponente--;
+            Derivado = true;
 
             _textoK.text = K.ToString();
             _textoExponente.text = Exponente.ToString();

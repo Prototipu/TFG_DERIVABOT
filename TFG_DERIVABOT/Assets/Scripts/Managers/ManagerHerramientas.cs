@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static ManagerHerramientas;
-
-public class ManagerHerramientas : MonoBehaviour
+public class ManagerHerramientas : ManagerI
 {
 
     public static ManagerHerramientas Instance;
@@ -25,13 +23,15 @@ public class ManagerHerramientas : MonoBehaviour
     public enum EHerramienta
     {
         Ninguna,
+        Cable,
         Clonacion,
         Reciclaje,
-        Cable,
         Empaquetado
     }
 
     private EHerramienta _herramienta;
+
+    public EHerramienta Herramienta => _herramienta;
 
     private void Awake()
     {
@@ -62,16 +62,16 @@ public class ManagerHerramientas : MonoBehaviour
 
     public void IniciarHerramienta(EHerramienta herramienta)
     {
-        if (_herramienta == EHerramienta.Ninguna)
-        {
-           if(herramienta == EHerramienta.Ninguna)
-                throw new System.Exception("No puedes inciar la herramienta Ninguna");
+        if(_herramienta == herramienta || _herramienta != EHerramienta.Ninguna)
+            return;
 
-            Herramientas[herramienta].Iniciar();
-            _herramienta = herramienta;
-        }
-        else
-            throw new System.Exception($"Para empezar el uso de una herramienta deberías cerrar primero {_herramienta}");
+        if (herramienta == EHerramienta.Ninguna)
+            throw new System.Exception("No puedes inciar la herramienta Ninguna");
+
+        Herramientas[herramienta].Iniciar();
+        _herramienta = herramienta;
+
+        _group.LevelUI.HerramientaSeleccionada(herramienta);
     }
 
 
@@ -87,7 +87,10 @@ public class ManagerHerramientas : MonoBehaviour
     public void ManejarSalida(EHerramienta herramienta)
     {
         if (herramienta == _herramienta)
+        {
             _herramienta = EHerramienta.Ninguna;
+            _group.LevelUI.SalirHerramientas();
+        }
         else
             throw new System.Exception($"Herramienta no manejada se cerró fuera de ámbito, herramienta {herramienta}");
     }

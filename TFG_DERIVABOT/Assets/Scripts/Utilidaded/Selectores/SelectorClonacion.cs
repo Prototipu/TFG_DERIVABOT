@@ -70,5 +70,6 @@ public class SelectorClonacion : MonoBehaviour
     private void OnDestroy()
     {
         ManagerHerramientas.Instance.Clonacion.CambioEstado -= CambioEstado;
+        ManagerHerramientas.Instance.Clonacion.OnSalir -= Clonacion_OnSalir;
     }
 }

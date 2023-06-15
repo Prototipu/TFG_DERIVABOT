@@ -31,31 +31,14 @@ public class Borrar : MonoBehaviour
 
         // MUL DIV X 2 3 SUM X 3 2 X 3 2 RES X 2 3 X 2 3
 
-        ManagerFunciones.Instance.InitNivel("X 3 2");
+        ManagerFunciones.Instance.InitNivel("MUL X 3 2 X 1 2");
 
         //ManagerHerramientas.Instance.Clonacion.OnSalir += Clonacion_OnSalir;
 
-        Invoke("Test", 0.5f);
-
         InvokeRepeating("CheckRespuesta", 2f, 2f);
     }
-
-    private void Clonacion_OnSalir()
-    {
-        Invoke("Test", 0.5f);
-    }
-
     private void CheckRespuesta()
     {
         Debug.Log(ManagerFunciones.Instance.CheckResultado().ToString());
-    }
-
-    private void Test()
-    {
-        //ManagerHerramientas.Instance.IniciarHerramienta(ManagerHerramientas.EHerramienta.Clonacion);
-
-        ManagerHerramientas.Instance.IniciarHerramienta(ManagerHerramientas.EHerramienta.Cable);
-
-        //ManagerHerramientas.Instance.IniciarHerramienta(ManagerHerramientas.EHerramienta.Reciclaje);
     }
 }

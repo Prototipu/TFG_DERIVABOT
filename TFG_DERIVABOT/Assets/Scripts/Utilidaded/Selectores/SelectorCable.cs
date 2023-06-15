@@ -109,7 +109,7 @@ public class SelectorCable : MonoBehaviour
         if (_init)
         {
             ManagerHerramientas.Instance.Cable.OnIniciar -= Cable_OnIniciar;
-            ManagerHerramientas.Instance.Cable.OnSalir += Cable_OnSalir;
+            ManagerHerramientas.Instance.Cable.OnSalir -= Cable_OnSalir;
         }
     }
 }
