@@ -5,28 +5,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectorCableLogaritmo : SelectorCable
+public class SelectorCablePotencial : SelectorCable
 {
-    public Logaritmica Fx;
-
-    [SerializeField]
-    private SpriteRenderer _sprite;
+    public Potencial Fx;
 
     private float progreso = 0;
-
-    [SerializeField]
-    private Color _inicio, _fin;
 
     private bool _flag = false;
 
     private void Start()
     {
-        if (!_collider || !_sprite)
+        if (!_collider)
         {
             Destroy(gameObject);
             throw new System.Exception($"No collider or animator found on {gameObject}");
         }
-        else
+        else if (!Fx.Derivado)
         {
             _init = true;
             ManagerHerramientas.Instance.Cable.OnIniciar += Cable_OnIniciar;
@@ -34,6 +28,8 @@ public class SelectorCableLogaritmo : SelectorCable
             if (!ManagerHerramientas.Instance.Cable.Iniciada)
                 gameObject.SetActive(false);
         }
+        else
+            Destroy(gameObject);
     }
 
     protected override void ChildUpdate()
@@ -42,6 +38,7 @@ public class SelectorCableLogaritmo : SelectorCable
         {
             _cargando = false;
             Fx.Cargar();
+            Destroy(gameObject);
         }
     }
 
@@ -72,14 +69,20 @@ public class SelectorCableLogaritmo : SelectorCable
 
         while (check())
         {
-            _sprite.color = Color.Lerp(_inicio, _fin, progreso);
+            Color c = Color.Lerp(Fx.ColorNoDerivado, Fx.ColorDerivado, progreso);
+
+            Fx.SpriteK.color = c;
+            Fx.SpriteExp.color = c;
 
             progreso += Time.deltaTime * (cargando ? 1f : -1f);
 
             yield return null;
         }
 
-        _sprite.color = cargando ? _fin : _inicio;
+        Color final = cargando ? Fx.ColorDerivado : Fx.ColorNoDerivado;
+
+        Fx.SpriteK.color = final;
+        Fx.SpriteExp.color = final;
 
         if (cargando)
             _flag = true;

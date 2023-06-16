@@ -177,7 +177,7 @@ namespace Derivadas_LIB
                     return new NIncognita(i.K, i.Exponente, i.Derivado);
 
                 case Potencial p:
-                    return new NFuncionFx(ConstruirArbolNodal(p.Fx), NFuncionFx.Tipo.POT, p.K, p.Exponente);
+                    return new NFuncionFx(ConstruirArbolNodal(p.Fx), NFuncionFx.Tipo.POT, p.K, p.Exponente, p.Derivado);
 
                 case Exponencial e:
                     return new NFuncionFx(ConstruirArbolNodal(e.Fx), NFuncionFx.Tipo.EXP, null);
