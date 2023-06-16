@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 8138148636405820586, guid: 8d3fa1a2ac3fd4a45991f8eba9fa42ab, type: 3}
+      propertyPath: _managerFunciones
+      value: 
+      objectReference: {fileID: 8930930077482845534}
     - target: {fileID: 8138148636405820587, guid: 8d3fa1a2ac3fd4a45991f8eba9fa42ab, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -738,3 +742,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 762734161973200588, guid: 1e2eea803426ff545aabf85d1e366a91, type: 3}
   m_PrefabInstance: {fileID: 5354851374110846248}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8930930077482845534 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3576220265519261814, guid: 1e2eea803426ff545aabf85d1e366a91, type: 3}
+  m_PrefabInstance: {fileID: 5354851374110846248}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1602d243dde6843a181c3dd3a399d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

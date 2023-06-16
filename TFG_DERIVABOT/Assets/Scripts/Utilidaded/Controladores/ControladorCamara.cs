@@ -10,8 +10,6 @@ public class ControladorCamara : MonoBehaviour
     [SerializeField]
     private float _velocidadPan = 0.01f, _velocidadZoom = 0.5f;
 
-    private bool lockMovimiento = false;
-
     private float _maxOrth = 10;
 
     private Vector2 _anteriorPosicion1, _anteriorPosicion2;
@@ -20,17 +18,20 @@ public class ControladorCamara : MonoBehaviour
 
     private Vector2 _distanciaCamara;
 
+    [SerializeField]
+    ManagerFunciones _managerFunciones;
 
-    private void Start()
+
+    private void Awake()
     {
-        ManagerFunciones.Instance.OnFuncionEscalada += OnFuncionEscalada;
+        _managerFunciones.OnFuncionEscalada += OnFuncionEscalada;
     }
 
     private void Update()
     {
         CalcularDistancias();
 
-        if (Input.touchCount == 1 && !lockMovimiento)
+        if (Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);
             // If it's the start of touch, save the position
@@ -69,7 +70,6 @@ public class ControladorCamara : MonoBehaviour
             }
             else if (touchZero.phase == TouchPhase.Moved || touchOne.phase == TouchPhase.Moved)
             {
-                lockMovimiento = false;
                 Vector2 newTouchPosition = touchZero.position;
                 Vector2 newTouchPosition2 = touchOne.position;
 
@@ -109,8 +109,6 @@ public class ControladorCamara : MonoBehaviour
         _minBounds = (Vector2)_camara.transform.position - halfSize;
 
         CalcularDistancias();
-
-        //lockMovimiento = true;
     }
 
     private void CalcularDistancias()

@@ -44,9 +44,11 @@ public class ManagerFunciones : ManagerI
 
     private void Start()
     {
-        //InitNivel(GameManager.Instance.GetNivelActual());
+        InitNivel(GameManager.Instance.GetNivelActual());
 
-        InitNivel("LOG EXP MUL SUM X 3 2 X 2 0 DIV X 4 5 SUM X 3 2 X 2 1");
+        //InitNivel("LOG EXP MUL SUM X 3 2 X 2 0 DIV X 4 5 SUM X 3 2 X 2 1");
+
+        //InitNivel("SUM X 3 2 X 2 1");
     }
 
     public void InitNivel(string nivel)
@@ -97,6 +99,24 @@ public class ManagerFunciones : ManagerI
         EscalarFuncion();
     }
 
+    public void EmpaquetarFuncion(Funcion original, int k, int exp)
+    {
+        GuardarStack();
+
+        Funcion potencial = GetFuncion<Potencial>(k, original, exp);
+
+        Funcion superior = original.FuncionSuperior;
+        if (superior)
+        {
+            potencial.transform.parent = superior.transform;
+            superior.Swap(original, potencial);
+            potencial.FuncionSuperior = superior;
+        }
+
+        EscalarFuncion();
+    }
+
+
     public void Reciclar(Funcion funcion)
     {
         GuardarStack();
@@ -108,7 +128,6 @@ public class ManagerFunciones : ManagerI
 
         EscalarFuncion();
     }
-
 
     public void CargarLogaritmica(Logaritmica funcion)
     {
@@ -161,18 +180,16 @@ public class ManagerFunciones : ManagerI
 
     private void EscalarFuncion()
     {
-        if (_funcionSuperior)
-        {
-            while (_funcionSuperior.FuncionSuperior)
-                _funcionSuperior = _funcionSuperior.FuncionSuperior;
 
-            _funcionSuperior.Escalar();
+        while (_funcionSuperior.FuncionSuperior)
+            _funcionSuperior = _funcionSuperior.FuncionSuperior;
 
-            OnFuncionEscalada?.Invoke(_funcionSuperior.anclajes.Centro(),
-                new Vector2(
-                    _funcionSuperior.anclajes.Anchura(),
-                    _funcionSuperior.anclajes.Altura()));
-        }
+        _funcionSuperior.Escalar();
+
+        OnFuncionEscalada?.Invoke(_funcionSuperior.anclajes.Centro(),
+            new Vector2(
+                _funcionSuperior.anclajes.Anchura(),
+                _funcionSuperior.anclajes.Altura()));
     }
 
     #region Creador
