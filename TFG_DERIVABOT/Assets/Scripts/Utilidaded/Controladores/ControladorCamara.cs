@@ -86,6 +86,16 @@ public class ControladorCamara : MonoBehaviour
                 _anteriorPosicion1 = newTouchPosition;
                 _anteriorPosicion2 = newTouchPosition2;
                 CalcularDistancias();
+
+
+                Vector3 newPosition = _camara.transform.position;
+
+                // Clamp the position to the min and max bounds
+                newPosition.x = Mathf.Clamp(newPosition.x, _minBounds.x + _distanciaCamara.x, _maxBounds.x - _distanciaCamara.x);
+                newPosition.y = Mathf.Clamp(newPosition.y, _minBounds.y + _distanciaCamara.y, _maxBounds.y - _distanciaCamara.y);
+
+                _camara.transform.position = newPosition;
+
             }
         }
     }
