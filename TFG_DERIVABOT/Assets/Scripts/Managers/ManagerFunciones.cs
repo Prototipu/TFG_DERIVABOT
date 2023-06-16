@@ -181,15 +181,18 @@ public class ManagerFunciones : ManagerI
     private void EscalarFuncion()
     {
 
-        while (_funcionSuperior.FuncionSuperior)
-            _funcionSuperior = _funcionSuperior.FuncionSuperior;
+        if (_funcionSuperior) 
+        {
+            while (_funcionSuperior.FuncionSuperior)
+                _funcionSuperior = _funcionSuperior.FuncionSuperior;
 
-        _funcionSuperior.Escalar();
+            _funcionSuperior.Escalar();
 
-        OnFuncionEscalada?.Invoke(_funcionSuperior.anclajes.Centro(),
-            new Vector2(
-                _funcionSuperior.anclajes.Anchura(),
-                _funcionSuperior.anclajes.Altura()));
+            OnFuncionEscalada?.Invoke(_funcionSuperior.anclajes.Centro(),
+                new Vector2(
+                    _funcionSuperior.anclajes.Anchura(),
+                    _funcionSuperior.anclajes.Altura()));
+        }
     }
 
     #region Creador
