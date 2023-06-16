@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 public class ManagerUILevel : ManagerI
 {
     [SerializeField]
-    private Movimiento _panelOperadores, _botonDeshacer, _botonSalirHerr, _botonCheck, _panelHerramientas;
+    private Movimiento _panelOperadores, _botonDeshacer, _botonSalirHerr, _botonCheck, _panelHerramientas, _botonInformacion;
 
     [SerializeField]
     private HerramientaSeleccionada _panelHerrSeleccionada;
 
     [SerializeField]
-    private GameObject _panelVictoria;
+    private GameObject _panelVictoria, _panelInfo;
 
     public static ManagerUILevel Instance { get; private set; }
 
@@ -25,6 +25,7 @@ public class ManagerUILevel : ManagerI
     public void HerramientaSeleccionada(ManagerHerramientas.EHerramienta herramienta)
     {
         _botonDeshacer.MoverRect(false);
+        _botonInformacion.MoverRect(false);
         _botonSalirHerr.MoverRect(true);
         _botonCheck.MoverRect(false);
 
@@ -48,6 +49,7 @@ public class ManagerUILevel : ManagerI
     internal void SalirHerramientas()
     {
         _botonDeshacer.MoverRect(true);
+        _botonInformacion.MoverRect(true);
         _botonSalirHerr.MoverRect(false);
         _botonCheck.MoverRect(true);
 
@@ -67,6 +69,7 @@ public class ManagerUILevel : ManagerI
             _panelVictoria.SetActive(true);
 
             _botonDeshacer.MoverRect(false);
+            _botonInformacion.MoverRect(false);
             _botonCheck.MoverRect(false);
 
             Destroy(_panelHerramientas.transform.parent.gameObject);
@@ -74,6 +77,28 @@ public class ManagerUILevel : ManagerI
         }
 
         return ret;
+    }
+
+
+    public void PanelInformacion()
+    {
+        if (!_botonInformacion.EnMovimiento)
+        {
+            if (_panelInfo.activeSelf)
+            {
+                _panelInfo.SetActive(false);
+
+                _botonDeshacer.MoverRect(true);
+                _botonCheck.MoverRect(true);
+            }
+            else
+            {
+                _panelInfo.SetActive(true);
+
+                _botonDeshacer.MoverRect(false);
+                _botonCheck.MoverRect(false);
+            }
+        }
     }
 
     public void PanelSelecionOperadores()
@@ -117,7 +142,7 @@ public class ManagerUILevel : ManagerI
 
     public void MoverPanelHerramientas()
     {
-        if (ManagerHerramientas.Instance.Herramienta == ManagerHerramientas.EHerramienta.Ninguna)
+        if (ManagerHerramientas.Instance.Herramienta == ManagerHerramientas.EHerramienta.Ninguna && !_panelInfo.activeSelf)
             _panelHerramientas.MoverRect();
     }
 
