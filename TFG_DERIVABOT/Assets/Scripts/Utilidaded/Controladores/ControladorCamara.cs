@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ControladorCamara : MonoBehaviour
@@ -21,6 +22,7 @@ public class ControladorCamara : MonoBehaviour
     [SerializeField]
     ManagerFunciones _managerFunciones;
 
+    private bool _init = false;
 
     private void Awake()
     {
@@ -93,22 +95,43 @@ public class ControladorCamara : MonoBehaviour
     {
         size *= 1.25f;
 
-        _camara.transform.position = new Vector3(pos.x, pos.y, _camara.transform.position.z);
 
         float ratio = size.x / size.y;
 
+
+
+        float oldOrth = _maxOrth;
+
         if (_camara.aspect < ratio)
-            _camara.orthographicSize = size.x / 2 / _camara.aspect;
+            _maxOrth = size.x / 2 / _camara.aspect;
         else
-            _camara.orthographicSize = size.y / 2;
+            _maxOrth = size.y / 2;
 
-        _maxOrth = _camara.orthographicSize;
 
-        Vector2 halfSize = new Vector2(_camara.aspect * _camara.orthographicSize, _camara.orthographicSize);
-        _maxBounds = (Vector2)_camara.transform.position + halfSize;
-        _minBounds = (Vector2)_camara.transform.position - halfSize;
+        Vector2 halfSize = new Vector2(_camara.aspect * _maxOrth, _maxOrth);
+        _maxBounds = (Vector2)pos + halfSize;
+        _minBounds = (Vector2)pos - halfSize;
+
 
         CalcularDistancias();
+
+        if ((_maxOrth > _camara.orthographicSize && _camara.orthographicSize == oldOrth ) || !_init || _maxOrth < _camara.orthographicSize)
+        {
+            _init = true;
+            _camara.orthographicSize = _maxOrth;
+            _camara.transform.position = new Vector3(pos.x, pos.y, _camara.transform.position.z);
+        }
+        else
+        {
+            // Move the camera
+            Vector3 newPosition = _camara.transform.position;
+
+            // Clamp the position to the min and max bounds
+            newPosition.x = Mathf.Clamp(newPosition.x, _minBounds.x + _distanciaCamara.x, _maxBounds.x - _distanciaCamara.x);
+            newPosition.y = Mathf.Clamp(newPosition.y, _minBounds.y + _distanciaCamara.y, _maxBounds.y - _distanciaCamara.y);
+
+            _camara.transform.position = newPosition;
+        }
     }
 
     private void CalcularDistancias()
