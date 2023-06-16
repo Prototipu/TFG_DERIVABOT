@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CheckResultado : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class CheckResultado : MonoBehaviour
     private Movimiento _botonCheck;
 
     [SerializeField]
-    private SpriteRenderer _sprite;
+    private Image _image;
 
     public void Check()
     {
@@ -32,15 +33,17 @@ public class CheckResultado : MonoBehaviour
     {
         float progreso = 0f;
 
-        float tiempo = 0.1f;
+        float tiempo = 0.3f;
 
         while (progreso < tiempo)
         {
-            _sprite.color = Color.Lerp(Color.red, Color.white, progreso / tiempo);
+            _image.color = Color.Lerp(Color.red, Color.white, progreso / tiempo);
 
             progreso += Time.deltaTime;
 
             yield return null;
         }
+
+        _image.color = Color.white;
     }
 }
