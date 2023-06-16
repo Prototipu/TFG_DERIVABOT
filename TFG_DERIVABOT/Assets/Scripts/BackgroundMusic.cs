@@ -6,6 +6,9 @@ public class BackgroundMusic : MonoBehaviour
 {
     private static BackgroundMusic Instance;
 
+    [SerializeField]
+    private AudioSource _source;
+
     private void Awake()
     {
         if (!Instance)
@@ -17,5 +20,20 @@ public class BackgroundMusic : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        GameManager.Instance.OnCambioVolumen += OnCambioVolumen;
+    }
+
+    private void OnCambioVolumen(float volumen)
+    {
+        _source.volume = volumen;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnCambioVolumen -= OnCambioVolumen;
     }
 }

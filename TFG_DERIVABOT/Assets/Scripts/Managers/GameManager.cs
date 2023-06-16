@@ -9,6 +9,15 @@ public class GameManager : MonoBehaviour
 
     private string _nivelActual = "SUM X 2 3 X 4 1";
 
+
+    public delegate void DlgCambioVolumen(float volumen);
+
+    public event DlgCambioVolumen OnCambioVolumen;
+
+    private float _volumen = 0.5f;
+
+    public float Volumen => _volumen;
+
     private void Awake()
     {
         if (!Instance)
@@ -31,5 +40,12 @@ public class GameManager : MonoBehaviour
     public string GetNivelActual()
     {
         return _nivelActual;
+    }
+
+
+    public void SliderVolumen(float volumen)
+    {
+        _volumen = volumen;
+        OnCambioVolumen?.Invoke(volumen);
     }
 }

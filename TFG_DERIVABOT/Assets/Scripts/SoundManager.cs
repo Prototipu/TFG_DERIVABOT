@@ -25,12 +25,26 @@ public class SoundManager : MonoBehaviour
 
                 AudioSource source = sourceObject.AddComponent<AudioSource>();
                 source.clip = clip;
+                source.volume = 0.5f;
 
                 _sources.Add(clip.name, source);
             }
         }
         else
             Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        GameManager.Instance.OnCambioVolumen += OnCambioVolumen;
+    }
+
+    private void OnCambioVolumen(float volumen)
+    {
+        foreach(AudioSource source in _sources.Values)
+        {
+            source.volume = volumen;    
+        }
     }
 
     public void PlayClip(string clip, float start = 0)
@@ -42,10 +56,14 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-
     public void StopClip(string clip)
     {
         if (_sources.TryGetValue(clip, out AudioSource audioSource))
             audioSource.Stop();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnCambioVolumen -= OnCambioVolumen;
     }
 }

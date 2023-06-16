@@ -363,8 +363,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -727,7 +727,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 09b11794bc9c9b04fadbcd91daa1ed0e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.579
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -838,6 +838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b97bf35ee6aab48b3a6ba0e67069a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _source: {fileID: 1049091861}
 --- !u!1001 &1177787069
 PrefabInstance:
   m_ObjectHideFlags: 0
