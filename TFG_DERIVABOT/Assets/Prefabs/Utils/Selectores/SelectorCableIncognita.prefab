@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2410998648650020923}
   - component: {fileID: 9122698707294434}
   m_Layer: 0
-  m_Name: SelectorCable
+  m_Name: SelectorCableIncognita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

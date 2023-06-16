@@ -18,18 +18,26 @@ public class SelectorClonacion : MonoBehaviour
     [SerializeField]
     private Collider2D _collider;
 
+    [SerializeField]
+    private SpriteRenderer _sprite;
 
     private void Start()
     {
-        if (!_collider)
+        if (!_collider || !_sprite)
         {
             Destroy(gameObject);
-            throw new System.Exception($"No collider found on {gameObject}");
+            throw new System.Exception($"No collider or sprite found on {gameObject}");
         }
         else
         {
             ManagerHerramientas.Instance.Clonacion.CambioEstado += CambioEstado;
             ManagerHerramientas.Instance.Clonacion.OnSalir += Clonacion_OnSalir;
+
+            if (Tipo == TipoSelector.S_FUNCION)
+                _sprite.color = new Color(1, 1, 0, 50f / 255f);
+            else
+                _sprite.color = new Color(0, 1, 1, 50f / 255f);
+
             if (!ManagerHerramientas.Instance.Clonacion.Iniciada)
                 gameObject.SetActive(false);
         }

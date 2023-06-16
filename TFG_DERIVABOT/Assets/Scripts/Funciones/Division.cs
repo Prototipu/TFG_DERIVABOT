@@ -17,11 +17,8 @@ namespace Derivadas_LIB.Funciones
 
         private float _operadorEspacioBase;
 
-        public void Init(Funcion uX, Funcion vX)
+        private void Awake()
         {
-            Ux = uX;
-            Vx = vX;
-
             SpriteRenderer operadorCaja = _operador.transform.parent.GetComponent<SpriteRenderer>();
 
             if (!operadorCaja)
@@ -31,6 +28,13 @@ namespace Derivadas_LIB.Funciones
             }
 
             _operadorEspacioBase = operadorCaja.bounds.size.x;
+        }
+
+        public void Init(Funcion uX, Funcion vX)
+        {
+            Ux = uX;
+            Vx = vX;
+
         }
 
         public override Funcion Derivada()

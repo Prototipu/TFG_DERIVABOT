@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86;
 
 namespace Derivadas_LIB.Funciones
 {
@@ -12,7 +13,25 @@ namespace Derivadas_LIB.Funciones
         public Funcion Fx;
 
         [SerializeField]
-        private SpriteRenderer _scaleFx;
+        private Anclajes _operador;
+
+        [SerializeField]
+        private ControladorCaja _caja;
+
+        private float _operadorEspacioBase;
+
+        private void Awake()
+        {
+            SpriteRenderer sprite = _operador.transform.parent.GetComponent<SpriteRenderer>();
+
+            if (!sprite)
+            {
+                Destroy(gameObject);
+                throw new Exception($"El exponencial no tiene un SpriteRenderer asignado");
+            }
+
+            _operadorEspacioBase = sprite.bounds.size.y;
+        }
 
         public void Init(Funcion fX)
         {
@@ -41,7 +60,33 @@ namespace Derivadas_LIB.Funciones
 
         public override void Escalar()
         {
-            throw new NotImplementedException();
+            Fx.Escalar();
+
+            _caja.EncajarFuncion(Fx, false);
+
+
+            float maxY = _caja.GetPunto(Punto.N).position.y;
+            float minY = _caja.GetPunto(Punto.S).position.y;
+
+
+            float ratio = ((maxY - minY) * 0.25f) / _operadorEspacioBase;
+
+            _operador.transform.parent.localScale = Vector2.one * ratio;
+
+            _operador.Anclar(_caja.GetPunto(Punto.W), Punto.E);
+
+            float pMedioHorizontal = (_caja.GetPunto(Punto.E).position.x + _operador.GetPunto(Punto.W).position.x) / 2;
+
+            anclajes.GetPunto(Punto.N).position = new Vector2(pMedioHorizontal, maxY);
+            anclajes.GetPunto(Punto.S).position = new Vector2(pMedioHorizontal, minY);
+            anclajes.GetPunto(Punto.E).position = _caja.GetPunto(Punto.E).position;
+            anclajes.GetPunto(Punto.W).position = _operador.GetPunto(Punto.W).position;
+
+        }
+
+        public void Cargar()
+        {
+            ManagerFunciones.Instance.CargarLogaritmica(this);
         }
 
         public override Funcion CheckEstado()

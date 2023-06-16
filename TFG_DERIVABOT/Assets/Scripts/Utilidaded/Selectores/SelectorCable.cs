@@ -4,53 +4,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectorCable : MonoBehaviour
+public abstract class SelectorCable : MonoBehaviour
 {
-    public Incognita Fx;
-
     [SerializeField]
-    private Collider2D _collider;
+    protected Collider2D _collider;
 
-    [SerializeField]
-    private ControladorAnimacionesInc _animator;
+    protected bool _cargando, _init = false;
 
-    private bool _cargando, _init = false;
-
-    private
-
-    void Start()
+    public void Cable_OnIniciar()
     {
-        if (!_collider || !_animator)
-        {
-            Destroy(gameObject);
-            throw new System.Exception($"No collider or animator found on {gameObject}");
-        }
-        else if (!Fx.Reciclable && !Fx.Derivado)
-        {
-            _init = true;
-            ManagerHerramientas.Instance.Cable.OnIniciar += Cable_OnIniciar;
-            ManagerHerramientas.Instance.Cable.OnSalir += Cable_OnSalir;
-            if (!ManagerHerramientas.Instance.Reciclaje.Iniciada)
-                gameObject.SetActive(false);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        gameObject.SetActive(true);
     }
 
-    private void Cable_OnIniciar()
-    {
-        if (!Fx.Reciclable)
-            gameObject.SetActive(true);
-    }
-
-    private void Cable_OnSalir()
+    public void Cable_OnSalir()
     {
         gameObject.SetActive(false);
     }
 
-    private void Update()
+    protected void Update()
     {
         if (Input.touchCount > 0)
         {
@@ -65,43 +36,37 @@ public class SelectorCable : MonoBehaviour
                     if (hit.collider && hit.collider == _collider)
                     {
                         _cargando = true;
-                        _animator.Play("RobotDerivado");
+                        ComenzarCarga();
                     }
                     break;
                 case TouchPhase.Moved:
                     if (_cargando && (!hit.collider || hit.collider != _collider))
+                    {
+                        _cargando = false;
                         CancelarCarga();
+                    }
                     break;
                 case TouchPhase.Ended:
                     if (_cargando)
+                    {
+                        _cargando = false;
                         CancelarCarga();
+                    }
                     break;
             }
         }
 
         if (_cargando)
-        {
-            AnimatorStateInfo info = _animator.GetEstado();
-            if (info.normalizedTime >= 1 && !info.loop)
-            {
-                _cargando = false;
-                Fx.Cargar();
-                Destroy(gameObject);
-            }
-        }
+            ChildUpdate();
     }
 
+    protected abstract void ChildUpdate();
 
-    private void CancelarCarga()
-    {
-        Debug.Log("Cancelando Carga");
 
-        _cargando = false;
+    protected abstract void CancelarCarga();
 
-        float progreso = _animator.GetEstado().normalizedTime;
 
-        _animator.Play("RobotDerivadoInverso", 0, 1 - progreso);
-    }
+    protected abstract void ComenzarCarga();
 
 
     private void OnDestroy()

@@ -44,7 +44,9 @@ public class ManagerFunciones : ManagerI
 
     private void Start()
     {
-        InitNivel(GameManager.Instance.GetNivelActual());
+        //InitNivel(GameManager.Instance.GetNivelActual());
+
+        InitNivel("LOG EXP MUL SUM X 3 2 X 2 0 DIV X 4 5 SUM X 3 2 X 2 1");
     }
 
     public void InitNivel(string nivel)
@@ -103,6 +105,31 @@ public class ManagerFunciones : ManagerI
         Destroy(_funcionSuperior.gameObject);
 
         _funcionSuperior = CrearFuncionNodos(nodo);
+
+        EscalarFuncion();
+    }
+
+
+    public void CargarLogaritmica(Logaritmica funcion)
+    {
+        GuardarStack();
+
+
+        Funcion superior = funcion.FuncionSuperior;
+
+        Division division = GetFuncion<Division>(funcion.Fx.Clone(), funcion.Fx);
+
+
+        if (superior)
+        {
+            division.transform.parent = superior.transform;
+            superior.Swap(funcion, division);
+            division.FuncionSuperior = superior;
+        }
+        else
+            _funcionSuperior = division;
+
+        Destroy(funcion.gameObject);
 
         EscalarFuncion();
     }
