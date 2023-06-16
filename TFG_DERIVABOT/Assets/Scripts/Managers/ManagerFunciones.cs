@@ -100,7 +100,7 @@ public class ManagerFunciones : ManagerI
         GuardarStack();
 
         Funcion superior = original.FuncionSuperior;
-        Funcion potencial = GetFuncion<Potencial>(k, original, exp);
+        Funcion potencial = GetFuncion<Potencial>(k, original, exp, false);
 
         if (superior)
         {

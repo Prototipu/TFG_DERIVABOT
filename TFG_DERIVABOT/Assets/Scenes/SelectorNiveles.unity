@@ -422,7 +422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: POT 4 EXP SUM X 4 3 X 6 2 3
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -568,7 +568,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: EXP MUL X 4 5 X 3 2
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -714,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: DIV X 3 2 MUL SUM X 3 2 X 4 0 X 4 5
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -937,7 +937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: LOG SUM X 5 3 X 4 0
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -1083,7 +1083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: DIV X 4 2 X 6 3
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -1229,7 +1229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: RES SUM X 7 4 X 8 3 SUM X 4 2 X 3 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -1375,7 +1375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: LOG MUL SUM X 3 2 X 4 0 RES X 5 4 X 8 0
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -1693,7 +1693,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: SUM X 3 0 X 5 0
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -1839,7 +1839,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: MUL SUM X 3 2 X 4 0 RES X 5 4 X 4 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -2047,7 +2047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: POT 3 X 4 2 2
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -2364,7 +2364,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: SUM X 7 4 X 9 0
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -2577,7 +2577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: MUL X 4 2 X 3 1
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -2723,7 +2723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: EXP SUM X 5 4 X 3 0
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
@@ -2869,7 +2869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _nivel
-      value: SUM X 2 3 X 1 2
+      value: SUM X 6 3 RES X 9 2 X 10 0
       objectReference: {fileID: 0}
     - target: {fileID: 7890771286486202619, guid: 3e80bb6c5cc54bd439282be1db1384de, type: 3}
       propertyPath: _manager
