@@ -516,7 +516,8 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PanelInformacion
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 101157720941968906, guid: a4d1075d34b34364d8b8ac0b61660f85, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a4d1075d34b34364d8b8ac0b61660f85, type: 3}
 --- !u!114 &1391008433197503595 stripped
 MonoBehaviour:
