@@ -47,7 +47,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -91,7 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: EXPONENTE
+  - name: EXPONENCIAL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -102,7 +102,7 @@ ScriptedImporter:
       y: 4
       width: 62
       height: 62
-    spriteID: 7daa594889078a8408aa4d689c428244
+    spriteID: ce22c589cf557944e86ea2c443279910
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -125,11 +125,55 @@ ScriptedImporter:
     dimension: {x: 0, y: 0}
     characterGroups: []
     boneReadOnly: 0
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
   documentPivot: {x: 0, y: 0}
-  documentAlignment: 7
+  documentAlignment: 0
   importHiddenLayers: 0
   layerMappingOption: 2
   generatePhysicsShape: 0
@@ -146,11 +190,21 @@ ScriptedImporter:
     spriteName: 
     isGroup: 1
     parentIndex: -1
-    spriteID: 00000000000000000000000000000000
+    spriteID: 8799577493d309e44b114d89d8f981f3
     layerID: 63
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
     isImported: 0
+    isVisible: 1
+  - name: EXPONENCIAL
+    spriteName: EXPONENCIAL
+    isGroup: 0
+    parentIndex: 0
+    spriteID: ce22c589cf557944e86ea2c443279910
+    layerID: 109
+    mosaicPosition: {x: 4, y: 4}
+    flatten: 0
+    isImported: 1
     isVisible: 1
   - name: EXPONENTE
     spriteName: EXPONENTE
@@ -160,13 +214,13 @@ ScriptedImporter:
     layerID: 107
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
-    isImported: 1
-    isVisible: 1
+    isImported: 0
+    isVisible: 0
   - name: "Rect\xE1ngulo 1"
     spriteName: 
     isGroup: 0
     parentIndex: 0
-    spriteID: 00000000000000000000000000000000
+    spriteID: d2e637e17c2bdca458127b4a349f888d
     layerID: 104
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -176,7 +230,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: 0
-    spriteID: 00000000000000000000000000000000
+    spriteID: be1001dd420fec040959403fe6334fbc
     layerID: 85
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -186,7 +240,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: 0
-    spriteID: 00000000000000000000000000000000
+    spriteID: 9017e4a4f6fd59348a5c828e31c1db52
     layerID: 87
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -196,7 +250,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: 0
-    spriteID: 00000000000000000000000000000000
+    spriteID: 5df5691d473e4fb49b51d438dad76358
     layerID: 89
     mosaicPosition: {x: 0, y: 0}
     flatten: 0
@@ -206,7 +260,7 @@ ScriptedImporter:
     spriteName: 
     isGroup: 0
     parentIndex: 0
-    spriteID: 00000000000000000000000000000000
+    spriteID: a3321928ecf843842b12c77bcf0e8482
     layerID: 91
     mosaicPosition: {x: 0, y: 0}
     flatten: 0

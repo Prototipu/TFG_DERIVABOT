@@ -56,7 +56,7 @@ namespace Derivadas_LIB.Funciones
 
             if (m1 || m2)
             {
-                Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(1, (Funcion)Vx.Clone(), 2);
+                Potencial p = ManagerFunciones.Instance.GetFuncion<Potencial>(1, (Funcion)Vx.Clone(), 2, false);
 
                 if (m1 && m2)
                 {

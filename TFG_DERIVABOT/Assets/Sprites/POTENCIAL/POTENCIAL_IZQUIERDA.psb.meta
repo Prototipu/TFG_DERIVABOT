@@ -47,7 +47,7 @@ ScriptedImporter:
     flipbookRows: 0
     flipbookColumns: 0
     ignorePngGamma: 0
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -91,7 +91,7 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: "Rect\xE1ngulo 2"
+  - name: EXPONENCIAL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -100,9 +100,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 131
-      width: 83
+      width: 62
       height: 62
-    spriteID: a79e694ccd97f2e40976e6260080d4b4
+    spriteID: 1f997508e8d2aee42b3a5d0b3f065bb2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -112,7 +112,7 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: -343, y: -35}
-  - name: "Rect\xE1ngulo 1"
+  - name: "Tono/saturaci\xF3n 1"
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -121,9 +121,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 120
+      width: 119
       height: 119
-    spriteID: 8d6d0bca237802244b21d8ab3ab747a5
+    spriteID: 71cda444dda05f6408ec3fc845376358
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -230,11 +230,55 @@ ScriptedImporter:
     dimension: {x: 0, y: 0}
     characterGroups: []
     boneReadOnly: 0
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Android
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   mosaicLayers: 1
   characterMode: 1
   documentPivot: {x: 0, y: 0}
-  documentAlignment: 7
+  documentAlignment: 0
   importHiddenLayers: 0
   layerMappingOption: 2
   generatePhysicsShape: 0
@@ -257,22 +301,22 @@ ScriptedImporter:
     flatten: 0
     isImported: 0
     isVisible: 1
-  - name: "Rect\xE1ngulo 2"
-    spriteName: "Rect\xE1ngulo 2"
+  - name: EXPONENCIAL
+    spriteName: EXPONENCIAL
     isGroup: 0
     parentIndex: 0
-    spriteID: a79e694ccd97f2e40976e6260080d4b4
-    layerID: 107
+    spriteID: 1f997508e8d2aee42b3a5d0b3f065bb2
+    layerID: 115
     mosaicPosition: {x: 4, y: 131}
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: "Rect\xE1ngulo 1"
-    spriteName: "Rect\xE1ngulo 1"
+  - name: "Tono/saturaci\xF3n 1"
+    spriteName: "Tono/saturaci\xF3n 1"
     isGroup: 0
     parentIndex: 0
-    spriteID: 8d6d0bca237802244b21d8ab3ab747a5
-    layerID: 104
+    spriteID: 71cda444dda05f6408ec3fc845376358
+    layerID: 109
     mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1

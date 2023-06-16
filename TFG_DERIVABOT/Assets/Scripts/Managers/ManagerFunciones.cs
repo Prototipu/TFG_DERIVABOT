@@ -44,11 +44,14 @@ public class ManagerFunciones : ManagerI
 
     private void Start()
     {
-        InitNivel(GameManager.Instance.GetNivelActual());
+        //InitNivel(GameManager.Instance.GetNivelActual());
 
-        //InitNivel("LOG EXP MUL SUM X 3 2 X 2 0 DIV X 4 5 SUM X 3 2 X 2 1");
+        InitNivel("LOG POT 3 EXP DIV SUM X 3 2 X 2 0 SUM X 3 2 X 2 1 5");
 
-        //InitNivel("SUM X 3 2 X 2 1");
+        //InitNivel("DIV X 3 2 X 2 4");
+
+        //InitNivel("POT 3 X 3 2 4");
+
     }
 
     public void InitNivel(string nivel)
@@ -103,9 +106,9 @@ public class ManagerFunciones : ManagerI
     {
         GuardarStack();
 
+        Funcion superior = original.FuncionSuperior;
         Funcion potencial = GetFuncion<Potencial>(k, original, exp);
 
-        Funcion superior = original.FuncionSuperior;
         if (superior)
         {
             potencial.transform.parent = superior.transform;
@@ -181,7 +184,7 @@ public class ManagerFunciones : ManagerI
     private void EscalarFuncion()
     {
 
-        if (_funcionSuperior) 
+        if (_funcionSuperior)
         {
             while (_funcionSuperior.FuncionSuperior)
                 _funcionSuperior = _funcionSuperior.FuncionSuperior;
@@ -238,9 +241,9 @@ public class ManagerFunciones : ManagerI
 
             case "POT":
                 int.TryParse(elementos.Dequeue(), out k);
-                int.TryParse(elementos.Dequeue(), out exp);
                 uX = CrearFuncionSRecursivo(elementos);
-                return GetFuncion<Potencial>(k, uX, exp);
+                int.TryParse(elementos.Dequeue(), out exp);
+                return GetFuncion<Potencial>(k, uX, exp, false);
 
             case "EXP":
                 uX = CrearFuncionSRecursivo(elementos);
@@ -271,7 +274,7 @@ public class ManagerFunciones : ManagerI
                     case NFuncionFx.Tipo.LOG:
                         return GetFuncion<Logaritmica>(CrearFuncionNodos(Fx.Inferior));
                     case NFuncionFx.Tipo.POT:
-                        return GetFuncion<Potencial>(Fx.Prms[0], CrearFuncionNodos(Fx.Inferior), Fx.Prms[1]);
+                        return GetFuncion<Potencial>(Fx.Prms[0], CrearFuncionNodos(Fx.Inferior), Fx.Prms[1], Fx.Prms[2]);
                 }
                 break;
             case NFuncion2Fx UxVx:
@@ -331,7 +334,7 @@ public class ManagerFunciones : ManagerI
 
             case Potencial p:
                 uX = prms[1] as Funcion;
-                p.Init((int)prms[0], uX, (int)prms[2]);
+                p.Init((int)prms[0], uX, (int)prms[2], (bool)prms[3]);
                 break;
 
             case Exponencial e:
